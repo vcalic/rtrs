@@ -1,0 +1,52 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <meta name="theme-color" content="#fafafa">
+
+  <script id="template_time" type="text/x-handlebars-template">
+  <div class="time-source">
+    {{date}}&nbsp;&nbsp;{{time}}nbsp;|&nbsp;{{source_label}}: {{source}}
+  </div>
+</script>
+<script id="template_title" type="text/x-handlebars-template">
+  <h1 class="title">{{title}}</h1>
+</script>
+<script id="template_lead" type="text/x-handlebars-template">
+  <div class="lead">{{lead}}</div>
+</script>
+<script id="template_body" type="text/x-handlebars-template">
+  <div class="body">{{{body}}}</div>
+</script>
+<script id="template_video" type="text/x-handlebars-template">
+        <div class="img-wrap video">
+      <video width="100%" controls poster="{{poster_url}}" id="video">
+        <source src="{{video_url}}" type="video/mp4">
+      </video>
+      <p class="img-info">{{video_info}}</p>
+    </div>
+</script>
+<script id="template_article" type="text/x-handlebars-template">
+    <article>
+    <header>
+      {{{time_source}}}{{{title}}}{{{lead}}}
+    </header>
+
+    {{{video}}}
+    {{{body}}}
+    <div class="clearfix"></div>
+</script>
+
+</head>
+
+<body class="story">
+<main id="main">
+</main>
+</body>
+</html>
