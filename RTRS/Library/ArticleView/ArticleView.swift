@@ -2,7 +2,7 @@
 //  ArticleView.swift
 //  RTRS
 //
-//  Created by Vlada Calic on 4/5/19.
+//  Created by Vlada Calic on 2/15/19.
 //  Copyright © 2019 Byrccom. All rights reserved.
 //
 
