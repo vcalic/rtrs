@@ -83,7 +83,29 @@ struct NetworkService {
         task.resume()
     }
 
-    
+    static func postData(url: URL, query:String, completion:@escaping(Result<Data, AppError>) -> Void) {
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, urlResponse, error) in
+            
+            guard let response = urlResponse as? HTTPURLResponse else { completion(.failure(.requestFailed));return }
+            
+            var errorCode = -1
+            if 200 ... 299 ~= response.statusCode {
+                if let data = data {
+                    completion(.success(data))
+                    return
+                }
+                else {
+                    errorCode = 1001
+                }
+            } else {
+                errorCode = response.statusCode
+            }
+            completion(.failure(AppError(code: errorCode)))
+        }
+        task.resume()
+        fatalError("Not implemented")
+    }
 }
 
 /* Obsolete in Swift 5 */

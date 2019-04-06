@@ -47,6 +47,8 @@
 		54600CC02240C539009F866F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54600CBF2240C539009F866F /* Defaults.swift */; };
 		54600CC22240C53E009F866F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54600CC12240C53E009F866F /* Extensions.swift */; };
 		547D5F19224AE4E9004D96C5 /* ArticleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547D5F18224AE4E9004D96C5 /* ArticleInfo.swift */; };
+		54BE1D832258F5B000D24ED0 /* webkit.js in Resources */ = {isa = PBXBuildFile; fileRef = 54BE1D822258F5B000D24ED0 /* webkit.js */; };
+		54BE1D8522590E2800D24ED0 /* ArticleMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BE1D8422590E2800D24ED0 /* ArticleMessages.swift */; };
 		54E8ACF22240CB9A00CEA529 /* RxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E8ACF12240CB9A00CEA529 /* RxExtensions.swift */; };
 		54E8ACF42240CBE900CEA529 /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E8ACF32240CBE900CEA529 /* PushService.swift */; };
 		54E8C86E22416B5300EB7170 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E8C86D22416B5300EB7170 /* APIService.swift */; };
@@ -97,6 +99,8 @@
 		54600CBF2240C539009F866F /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		54600CC12240C53E009F866F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		547D5F18224AE4E9004D96C5 /* ArticleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleInfo.swift; sourceTree = "<group>"; };
+		54BE1D822258F5B000D24ED0 /* webkit.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = webkit.js; sourceTree = "<group>"; };
+		54BE1D8422590E2800D24ED0 /* ArticleMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleMessages.swift; sourceTree = "<group>"; };
 		54E8ACF12240CB9A00CEA529 /* RxExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxExtensions.swift; sourceTree = "<group>"; };
 		54E8ACF32240CBE900CEA529 /* PushService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushService.swift; sourceTree = "<group>"; };
 		54E8C86D22416B5300EB7170 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 			children = (
 				543B27AE2256C26F00AE9C59 /* ArticleView.swift */,
 				543B27B02256C87E00AE9C59 /* ArticleViewDelegate.swift */,
+				54BE1D822258F5B000D24ED0 /* webkit.js */,
+				54BE1D8422590E2800D24ED0 /* ArticleMessages.swift */,
 			);
 			path = ArticleView;
 			sourceTree = "<group>";
@@ -377,6 +383,7 @@
 				54600C9F2240C3AF009F866F /* Assets.xcassets in Resources */,
 				542DC2F922556A9200665DBF /* main.css in Resources */,
 				542DC2F02255594200665DBF /* main.js in Resources */,
+				54BE1D832258F5B000D24ED0 /* webkit.js in Resources */,
 				540359872253CC59000A0202 /* handlebars.js in Resources */,
 				543B27AC2256AF1300AE9C59 /* layout.html in Resources */,
 				542DC300225687D700665DBF /* title.html in Resources */,
@@ -392,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54BE1D8522590E2800D24ED0 /* ArticleMessages.swift in Sources */,
 				540359892253CC66000A0202 /* Handlebars.swift in Sources */,
 				54600C9A2240C3AE009F866F /* HomeViewController.swift in Sources */,
 				54600C982240C3AE009F866F /* AppDelegate.swift in Sources */,
