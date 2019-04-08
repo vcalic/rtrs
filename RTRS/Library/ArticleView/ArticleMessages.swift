@@ -63,6 +63,5 @@ extension ArticleMessage {
             let base64 = errorMsg.data(using: .utf8)?.base64EncodedString() ?? ""
             return "bridge.resolvePromise('\(promiseId)', null, '\(base64)')"
         }
-
     }
 }

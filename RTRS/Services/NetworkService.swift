@@ -7,7 +7,6 @@
 //
 
 import Foundation
-
 struct NetworkService {
     
     static func getData(url: URL, completion:@escaping(Result<Data, AppError>) -> Void) {
@@ -106,6 +105,7 @@ struct NetworkService {
         task.resume()
         fatalError("Not implemented")
     }
+    
 }
 
 /* Obsolete in Swift 5 */

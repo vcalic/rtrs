@@ -2,6 +2,7 @@ class WebKit {
     constructor() {
         this._base64 = new Base64();
         this.promises = []
+        this.contentHeight = 0;
     }
     
     parseXml(xmlStr) {
@@ -68,6 +69,7 @@ class WebKit {
     }
     
     setContentHeight(param) {
+        this.contentHeight = document.body.offsetHeight;
         window.webkit.messageHandlers.contentHeight.postMessage({"contentHeight": param});
     }
     
@@ -83,7 +85,17 @@ class WebKit {
         document.documentElement.style.webkitUserSelect='none';
         document.documentElement.style.webkitTouchCallout='none';
     }
+
+    startLoop() {
+      const func = _ =>  {
+        if (document.body.offsetHeight !== this.contentHeight) {
+            setContentHeight(this.contentHeight);
+        }
+      };
+      setInterval(func , 200);
+    }
 }
+
 class Base64 {
     constructor() {
         this._keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
