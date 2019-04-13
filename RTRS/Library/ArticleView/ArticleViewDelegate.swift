@@ -8,6 +8,7 @@
 
 import UIKit
 import JavaScriptCore
+import WebKit
 
 enum ArticleViewContentHeightSource {
     case scrollView
@@ -23,15 +24,11 @@ protocol  ArticleViewDelegate : class {
     
     func shouldStartLoad(_ sender:ArticleView,
                          request inRequest: URLRequest,
-                         navigationType inType : Any) -> Bool
+                         navigationType inType : WKNavigationType) -> Bool
     
-    func didGotContentHeight(_ sender:ArticleView,
+    func didGetContentHeight(_ sender:ArticleView,
                              contentHeight:CGFloat,
                              source:ArticleViewContentHeightSource)
-    
-    func didExposeJSContext(_ sender:ArticleView,
-                            context: JSContext?)
-    
 }
 
 // MARK: - ArticleViewDelegate Extension
@@ -44,17 +41,33 @@ extension  ArticleViewDelegate {
     }
     
     func didFinishLoad(_ sender: ArticleView) {
-    }
+          }
     
-    func shouldStartLoad(_ sender: ArticleView, request inRequest: URLRequest, navigationType inType: Any) -> Bool {
-        return false
-    }
+    func shouldStartLoad(_ sender: ArticleView, request inRequest: URLRequest, navigationType inType: WKNavigationType) -> Bool {
+        debugPrint("request \(inRequest)")
+        switch inType {
+            
+        case .linkActivated:
+            debugPrint("Type linkActivated")
+        case .formSubmitted:
+            debugPrint("Type formSubmitted")
+        case .backForward:
+            debugPrint("Type backForward")
+        case .reload:
+            debugPrint("Type reload")
+        case .formResubmitted:
+            debugPrint("Type formResubmitted")
+        case .other:
+            debugPrint("Type other")
+        @unknown default:
+            debugPrint("Type unknown")
+        }
+        return true
+      }
     
-    func didGotContentHeight(_ sender: ArticleView, contentHeight: CGFloat, source: ArticleViewContentHeightSource) {
+    func didGetContentHeight(_ sender: ArticleView, contentHeight: CGFloat, source: ArticleViewContentHeightSource) {
     }
-    
-    func didExposeJSContext(_ sender: ArticleView, context: JSContext?) {
-        
+    func didStartNetworking(_ sender: ArticleView) {
     }
-    
+
 }

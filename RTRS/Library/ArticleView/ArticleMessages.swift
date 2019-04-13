@@ -10,7 +10,8 @@ import Foundation
 import WebKit
 
 enum ArticleMessage: String, CaseIterable  {
-    case contentHeight = "contentHeight"
+    case nullMessage = "null"
+    case documentHeight = "height"
     case debugPrint = "debugPrint"
     case getURL = "getURL"
     case postURL = "postURL"
@@ -19,8 +20,9 @@ enum ArticleMessage: String, CaseIterable  {
 extension ArticleMessage {
     func urlCall(message: WKScriptMessage, completion: @escaping(String) -> Void) {
         switch self {
-            
-        case .contentHeight:
+        case .nullMessage:
+            return
+        case .documentHeight:
             return
         case .debugPrint:
             return
@@ -35,6 +37,7 @@ extension ArticleMessage {
             }
 
             if self == .getURL {
+                print("Getting data from ArticleMessage")
                 NetworkService.getData(url: url) { (result) in
                     DispatchQueue.main.async {
                         completion(self.process(result: result, promiseId: promiseId))
@@ -53,6 +56,7 @@ extension ArticleMessage {
     }
     
     private func process(result: Result<Data, AppError>, promiseId: String) -> String {
+        print("Result \(result)")
         switch result {
         case .success(let result):
             let base64 = result.base64EncodedString()

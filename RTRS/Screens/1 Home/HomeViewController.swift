@@ -59,7 +59,7 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let id = Int(dataSource[indexPath.row].id) {
             APIService().article(id: id) { [weak self] (result) in
-                guard let article = try? result.get() else { debugPrint("Error"); return }
+                guard let article = try? result.get() else { debugPrint("Error in article"); return }
                 let vc = ArticleViewController.make(with: article)
                 self?.show(vc, sender: self)
             }

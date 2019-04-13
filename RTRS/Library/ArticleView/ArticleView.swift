@@ -17,6 +17,9 @@ struct ArticleViewConstants {
 
 class ArticleView: UIView {
     
+    private var baseHTML = Bundle.main.bundleURL
+    //var baseHTML = Bundle.main.url(forResource: "HTMLResources", withExtension: nil)!
+
     // MARK: - Properties
     private var isPad = false
     private var javaScript: String!
@@ -25,7 +28,7 @@ class ArticleView: UIView {
     weak var delegate : ArticleViewDelegate?
 
     lazy var webView : WKWebView = {
-        let retval = WKWebView.init(frame: CGRect.zero)
+        let retval = WKWebView.init(frame: .zero, configuration: webConfig)
         retval.translatesAutoresizingMaskIntoConstraints  = false
         //retval.delegate = self
         retval.uiDelegate = self
@@ -86,6 +89,7 @@ class ArticleView: UIView {
         setupConstraints()
         setDefaultUserAgent(with: "RTRS iOS App/1.0")
         webView.scrollView.addObserver(self, forKeyPath: ArticleViewConstants.ContentSizeKey, options: .new, context: nil)
+        debugPrint("ArticleView initialized")
     }
 }
 
@@ -93,8 +97,7 @@ class ArticleView: UIView {
 extension ArticleView {
     func refresh() {
         debugPrint("Refresh")
-        //  webView.loadHTMLString(html!, baseURL: self.baseHTML)
-
+        webView.loadHTMLString(html!, baseURL: baseHTML)
     }
 
     func scrollToTop() {
@@ -150,18 +153,26 @@ extension ArticleView: WKNavigationDelegate {
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         //TODO: do we need both didFinishNetworking and didFinishLoad??
-        
         delegate?.didFinishNetworking(self)
         
         if isPad {
             webView.scrollView.contentSize = CGSize(width: frame.size.width, height: frame.size.height)
         }
+        webView.evaluateJavaScript(javaScript, completionHandler: nil)
+        webView.evaluateJavaScript("""
+                var bridge = new WebKit();
+                let console = {log:(str) => {bridge.debugPrint(str)}};
+        """, completionHandler: nil)
         
         if contentSizePooling {
-            let javaScript = """
+            /* let javaScript = """
             previousValue=0;setInterval(function(){document.body.offsetHeight!=previousValue&&(previousValue=document.body.offsetHeight,window.webkit.messageHandlers.contentHeight.postMessage(previousValue))},200);
-            """
-            webView.evaluateJavaScript(javaScript, completionHandler: nil)
+            """ */
+            
+            webView.evaluateJavaScript("""
+                bridge.startLoop();
+            """, completionHandler: nil)
+            debugPrint("Evaluated javascript")
         }
         
         delegate?.didFinishLoad(self)
@@ -181,13 +192,15 @@ extension ArticleView: WKUIDelegate {
 // MARK: - WKScriptMessageHandler delegate
 extension ArticleView: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        let badMessage = "ArticleView.badMessage: \(message)"
+        
+        let name = message.name.trimmingCharacters(in: .whitespacesAndNewlines)
+        let badMessage = "ArticleView.badMessage: \(name)"
         if let function = ArticleMessage(rawValue: message.name) {
             switch function {
-            case .contentHeight:
-                guard let contentHeight = (message.body as? NSString)?.floatValue else { debugPrint(badMessage); return }
+            case .documentHeight:
+                guard let contentHeight = (message.body as? NSNumber)?.floatValue else { debugPrint(badMessage); return }
                 DispatchQueue.main.async {
-                    self.delegate?.didGotContentHeight(self, contentHeight: CGFloat(contentHeight), source: .javaScript)
+                    self.delegate?.didGetContentHeight(self, contentHeight: CGFloat(contentHeight), source: .javaScript)
                 }
             case .debugPrint:
                 debugPrint("JSMessage: \(message.body)")
@@ -195,9 +208,9 @@ extension ArticleView: WKScriptMessageHandler {
                 function.urlCall(message: message) { (message) in
                     self.webView.evaluateJavaScript(message, completionHandler: nil)
                 }
+            case .nullMessage:
+                debugPrint("Null message")
             }
-        } else {
-            debugPrint(badMessage)
         }
     }
 }
@@ -251,7 +264,7 @@ extension ArticleView {
             let size = try (_change[NSKeyValueChangeKey.init(rawValue: "new")] as? CGSize).or(LocalError.badChangeKey)
             let path = try keyPath.or(LocalError.badPath)
             if path == ArticleViewConstants.ContentSizeKey {
-                delegate?.didGotContentHeight(self, contentHeight: size.height, source: .scrollView)
+                delegate?.didGetContentHeight(self, contentHeight: size.height, source: .scrollView)
             }
         } catch (let error) {
             debugPrint("ArticleView.observeValue error: \(error)")

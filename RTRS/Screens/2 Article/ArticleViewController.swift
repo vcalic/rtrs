@@ -11,7 +11,7 @@ import WebKit
 
 class ArticleViewController: UIViewController, StoryboardLoadable {
 
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var articleView: ArticleView!
     private var article: Article!
     private var html: String?
     
@@ -19,7 +19,8 @@ class ArticleViewController: UIViewController, StoryboardLoadable {
         super.viewDidLoad()
         do {
             let h = try Handlebars()
-            html = try h.perform()
+            let html = try h.perform()
+            load(html)
         } catch (let error) {
             debugPrint("Handlebars error \(error)")
         }
@@ -27,22 +28,14 @@ class ArticleViewController: UIViewController, StoryboardLoadable {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        load()
     }
+    
 }
 
 extension ArticleViewController {
-    func load() {
-        if let _html = html {
-            debugPrint("Loadamo stringa")
-            webView.loadHTMLString(_html, baseURL: Bundle.main.bundleURL)
-        } else {
-            let url = Bundle.main.url(forResource: "index", withExtension: "html")!
-            webView.loadFileURL(url, allowingReadAccessTo: url)
-            
-            let request = URLRequest(url: url)
-            webView.load(request)
-        }
+    func load(_ html:String) {
+        articleView.html = html
+        articleView.delegate = self
     }
 }
 
@@ -54,3 +47,5 @@ extension ArticleViewController {
         return vc
     }
 }
+
+extension ArticleViewController: ArticleViewDelegate {}

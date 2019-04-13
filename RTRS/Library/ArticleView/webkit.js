@@ -14,12 +14,12 @@ class WebKit {
         var promise = new Promise(
                                   function (resolve, reject) {
                                   try {
-                                  var promiseId = self.generateUUID();
-                                  self.promises[promiseId] = {resolve, reject};
+                                    var promiseId = self.generateUUID();
+                                    self.promises[promiseId] = {resolve, reject};
                                   
-                                  window.webkit.messageHandlers.getURL.postMessage({promiseId: promiseId, url: url});
+                                    window.webkit.messageHandlers.getURL.postMessage({promiseId: promiseId, url: url});
                                   } catch (exception) {
-                                  console.error("Error in get: ", exception);
+                                    console.error("Error in get: ", exception);
                                   }
                                   });
         return promise;
@@ -31,12 +31,12 @@ class WebKit {
         var promise = new Promise(
                                   function (resolve, reject) {
                                   
-                                  var promiseId = self.generateUUID();
-                                  self.promises[promiseId] = {resolve, reject};
-                                  try {
-                                  window.webkit.messageHandlers.postURL.postMessage({promiseId: promiseId, url: url, params: data});
-                                  } catch (exception) {
-                                  console.error("Error in postiOS", exception);
+                                    var promiseId = self.generateUUID();
+                                    self.promises[promiseId] = {resolve, reject};
+                                    try {
+                                        window.webkit.messageHandlers.postURL.postMessage({promiseId: promiseId, url: url, params: data});
+                                    } catch (exception) {
+                                        console.error("Error in postiOS", exception);
                                   }
                                   });
         return promise;
@@ -68,15 +68,10 @@ class WebKit {
         delete this.promises[promiseId];
     }
     
-    setContentHeight(param) {
-        this.contentHeight = document.body.offsetHeight;
-        window.webkit.messageHandlers.contentHeight.postMessage({"contentHeight": param});
+    setContentHeight() {
+        window.webkit.messageHandlers.height.postMessage(document.body.offsetHeight);
     }
     
-    contentHeight() {
-        return document.body.offsetHeight;
-    }
-
     debugPrint(text) {
         window.webkit.messageHandlers.debugPrint.postMessage(text);
     }
@@ -87,12 +82,13 @@ class WebKit {
     }
 
     startLoop() {
-      const func = _ =>  {
-        if (document.body.offsetHeight !== this.contentHeight) {
-            setContentHeight(this.contentHeight);
-        }
-      };
-      setInterval(func , 200);
+        const func = _ =>  {
+          if (document.body.offsetHeight !== this.contentHeight) {
+                this.contentHeight = document.body.offsetHeight;
+                this.setContentHeight();
+          }
+        };
+        setInterval(func , 200);
     }
 }
 
@@ -100,7 +96,6 @@ class Base64 {
     constructor() {
         this._keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
     }
-    
     decode(input) {
         var output = "";
         var chr1, chr2, chr3;
@@ -134,7 +129,6 @@ class Base64 {
         return output;
         
     };
-    
     // private method for UTF-8 decoding
     _utf8_decode(utftext) {
         var string = "";
