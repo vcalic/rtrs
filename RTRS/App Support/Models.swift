@@ -32,4 +32,18 @@ struct story {
     }
 }
 
+enum Alphabet {
+    case latin
+    case cyril
+}
+extension Alphabet {
+    var source: String {
+        switch self {
+        case .latin:
+            return "Izvor"
+        case .cyril:
+            return "Izvor"
+        }
+    }
+}
 

@@ -79,7 +79,6 @@ extension AppCoordinator {
                 let idString = queryDictionary["id"],
                 let id = Int(idString)
             {
-                debugPrint("Found \(id)")
                 openArticle(id: id)
             }
         }
