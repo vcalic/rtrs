@@ -47,7 +47,7 @@ struct Handlebars {
             do {
                 let ex = try exception.or(MError())
                 let mess = try ex.toString().or(MError())
-                print("\(mess)")
+                debugPrint("JSContext exception message: \(mess)")
             } catch (let error) {
                 debugPrint("JSContext exception: \(error)")
             }
@@ -94,17 +94,16 @@ struct Handlebars {
         }
     }
     
-    func perform() throws -> String {
+    func perform(article: Article) throws -> String {
         if templates == nil {
             throw AppError.missingTemplate
         }
         guard let createStencil = context.objectForKeyedSubscript("createStencil") else { debugPrint("No createStencil"); throw(AppError.missingTemplate) }
         
-        if let jsondata = try? JSONSerialization.data(withJSONObject: RTRS.getData() as Any,
+        if let jsondata = try? JSONSerialization.data(withJSONObject: article.getData() as Any,
                                                       options: .prettyPrinted),
             let jsontext = String(data: jsondata, encoding: .utf8) {
             if let stencil = createStencil.call(withArguments: [jsontext, templatesJson])!.toString() {
-                debugPrint(stencil)
                 return stencil
             } else {
                 throw(AppError.handlebarError)
@@ -112,12 +111,8 @@ struct Handlebars {
         } else {
             throw(AppError.missingTemplate)
         }
-
-        
-        
-        
     }
-    
+
   
 }
 

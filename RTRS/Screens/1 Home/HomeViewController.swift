@@ -8,28 +8,22 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, StoryboardLoadable {
 
+    static var storyboardName = "Main"
+    
     private var dataSource: [ArticleInfo] = []
     @IBOutlet weak var tableView: UITableView!
+    weak var delegate: HomeViewControllerDelegate?
+    var apiService:APIService!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-        HomeLoader().loadUser(withID: -1) { (result) in
-            switch result {
-            case .success(let list):
-                debugPrint("Duz: \(list.news.count)")
-            
-            default:
-                debugPrint("None")
-            }
-        }
     }
     
     func loadData() {
-        let api = APIService()
-        api.homePage(id: -1, count: 50) { [weak self] result in
+        apiService.homePage(id: -1, count: 50) { [weak self] result in
             switch result {
             case .success(let articles):
                 self?.dataSource = articles.news
@@ -39,8 +33,6 @@ class HomeViewController: UIViewController {
             }
         }
     }
-
-
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -57,53 +49,19 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let id = Int(dataSource[indexPath.row].id) {
-            APIService().article(id: id) { [weak self] (result) in
-                guard let article = try? result.get() else { debugPrint("Error in article"); return }
-                let vc = ArticleViewController.make(with: article)
-                self?.show(vc, sender: self)
-            }
-        } else {
-            debugPrint("Nije int: \(dataSource[indexPath.row].id)")
-        }
+        delegate?.didSelect(article: dataSource[indexPath.row], in: self)
     }
 }
 
-
-class HomeLoader {
-    
-    typealias HomeHandler = (Result<ArticleList, AppError>) -> Void
-    var placeholder = ""
-    /* func loadUser(withID id:Int) -> Future<ArticleList> {
-        
-    } */
-    
-    func loadUser(withID id: Int, completionHandler: @escaping HomeHandler) {
-        let url = Services.categoryArticles(id: -1, count: 30).value
-        let urlSession = URLSession.shared
-        
-        let task = urlSession.dataTask(with: url) { [weak self] data, response, error in
-            self?.placeholder = ""
-            if let error = error {
-                let appError = AppError(error: error)
-                completionHandler(.failure(appError))
-            } else {
-                do {
-                    // let user: User = try unbox(data: data ?? Data())
-                    if let data = data {
-                        let list = try ArticleList(with: data)
-                        completionHandler(.success(list))
-                    } else {
-                        completionHandler(.failure(.generalError))
-                    }
-                    
-                } catch {
-                    completionHandler(.failure(AppError(error:error)))
-                }
-            }
-        }
-        
-        task.resume()
+extension HomeViewController {
+    class func make(with apiService: APIService, delegate:HomeViewControllerDelegate) -> HomeViewController {
+        let vc = HomeViewController.instantiate()
+        vc.delegate = delegate
+        vc.apiService = apiService
+        return vc
     }
 
+}
+protocol HomeViewControllerDelegate: class {
+    func didSelect(article: ArticleInfo, in: HomeViewController)
 }

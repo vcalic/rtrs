@@ -8,14 +8,21 @@
 
 import UIKit
 
+//extension UIApplication {
+//    var coordinator: AppCoordinator!
+//}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    
     var window: UIWindow?
-
+    var coordinator: AppCoordinator!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let window = UIWindow()
+        coordinator = AppCoordinator(with: window)
+        coordinator.start(completion: nil)
         return true
     }
 

@@ -89,14 +89,12 @@ class ArticleView: UIView {
         setupConstraints()
         setDefaultUserAgent(with: "RTRS iOS App/1.0")
         webView.scrollView.addObserver(self, forKeyPath: ArticleViewConstants.ContentSizeKey, options: .new, context: nil)
-        debugPrint("ArticleView initialized")
     }
 }
 
 //MARK: - Tools
 extension ArticleView {
     func refresh() {
-        debugPrint("Refresh")
         webView.loadHTMLString(html!, baseURL: baseHTML)
     }
 
@@ -136,7 +134,10 @@ extension ArticleView: WKNavigationDelegate {
     {
         let inType = navigationAction.navigationType
         let inRequest = navigationAction.request
-        
+        if let isFile = inRequest.url?.scheme?.starts(with: "file"), isFile == true {
+            decisionHandler(.allow)
+            return
+        }
         var retval = true;
         // passing decission to ArticleViewDelegate object
         if let _retval = delegate?.shouldStartLoad(self,
@@ -172,7 +173,6 @@ extension ArticleView: WKNavigationDelegate {
             webView.evaluateJavaScript("""
                 bridge.startLoop();
             """, completionHandler: nil)
-            debugPrint("Evaluated javascript")
         }
         
         delegate?.didFinishLoad(self)

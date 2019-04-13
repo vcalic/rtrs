@@ -46,6 +46,12 @@
 		54600CC02240C539009F866F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54600CBF2240C539009F866F /* Defaults.swift */; };
 		54600CC22240C53E009F866F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54600CC12240C53E009F866F /* Extensions.swift */; };
 		547D5F19224AE4E9004D96C5 /* ArticleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547D5F18224AE4E9004D96C5 /* ArticleInfo.swift */; };
+		5488FAA322622F37005FDDBD /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5488FAA222622F37005FDDBD /* AppCoordinator.swift */; };
+		5488FAA622622FCB005FDDBD /* HomeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5488FAA522622FCB005FDDBD /* HomeLoader.swift */; };
+		5488FAA822622FE8005FDDBD /* ArticleLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5488FAA722622FE8005FDDBD /* ArticleLoader.swift */; };
+		5488FAAA2262327D005FDDBD /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5488FAA92262327D005FDDBD /* Coordinator.swift */; };
+		5488FAAC22623E48005FDDBD /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5488FAAB22623E48005FDDBD /* AppExtensions.swift */; };
+		5488FAAE22625B4F005FDDBD /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5488FAAD22625B4F005FDDBD /* Observable.swift */; };
 		54BE1D832258F5B000D24ED0 /* webkit.js in Resources */ = {isa = PBXBuildFile; fileRef = 54BE1D822258F5B000D24ED0 /* webkit.js */; };
 		54BE1D8522590E2800D24ED0 /* ArticleMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BE1D8422590E2800D24ED0 /* ArticleMessages.swift */; };
 		54BE1D8722593A8A00D24ED0 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BE1D8622593A8A00D24ED0 /* ArticleCell.swift */; };
@@ -98,6 +104,12 @@
 		54600CBF2240C539009F866F /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		54600CC12240C53E009F866F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		547D5F18224AE4E9004D96C5 /* ArticleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleInfo.swift; sourceTree = "<group>"; };
+		5488FAA222622F37005FDDBD /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		5488FAA522622FCB005FDDBD /* HomeLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLoader.swift; sourceTree = "<group>"; };
+		5488FAA722622FE8005FDDBD /* ArticleLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleLoader.swift; sourceTree = "<group>"; };
+		5488FAA92262327D005FDDBD /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		5488FAAB22623E48005FDDBD /* AppExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtensions.swift; sourceTree = "<group>"; };
+		5488FAAD22625B4F005FDDBD /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		54BE1D822258F5B000D24ED0 /* webkit.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = webkit.js; sourceTree = "<group>"; };
 		54BE1D8422590E2800D24ED0 /* ArticleMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleMessages.swift; sourceTree = "<group>"; };
 		54BE1D8622593A8A00D24ED0 /* ArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
@@ -142,6 +154,7 @@
 		5423DAAF224EE6770061F20B /* 2 Article */ = {
 			isa = PBXGroup;
 			children = (
+				5488FAA722622FE8005FDDBD /* ArticleLoader.swift */,
 				5423DAB2224EE6B50061F20B /* ArticleViewController.swift */,
 			);
 			path = "2 Article";
@@ -225,6 +238,7 @@
 		54600C962240C3AE009F866F /* RTRS */ = {
 			isa = PBXGroup;
 			children = (
+				5488FAA122622DFB005FDDBD /* Coordinator */,
 				54CB072A2261F81A005B49EC /* Storyboards */,
 				54600CAB2240C42A009F866F /* Screens */,
 				54600CAF2240C4AC009F866F /* App Support */,
@@ -278,7 +292,9 @@
 				54600CB92240C533009F866F /* DescribableProtocol.swift */,
 				54600CB82240C533009F866F /* FooterActivityView.swift */,
 				54600CB52240C533009F866F /* ListenerProtocol.swift */,
+				5488FAA92262327D005FDDBD /* Coordinator.swift */,
 				54600CB62240C533009F866F /* StoryboardLoadable.swift */,
+				5488FAAD22625B4F005FDDBD /* Observable.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -291,6 +307,7 @@
 				54600CB12240C4FB009F866F /* AppError.swift */,
 				54600CB22240C4FB009F866F /* AppProtocols.swift */,
 				54600C972240C3AE009F866F /* AppDelegate.swift */,
+				5488FAAB22623E48005FDDBD /* AppExtensions.swift */,
 			);
 			path = "App Support";
 			sourceTree = "<group>";
@@ -298,6 +315,7 @@
 		54600CB02240C4CF009F866F /* 1 Home */ = {
 			isa = PBXGroup;
 			children = (
+				5488FAA522622FCB005FDDBD /* HomeLoader.swift */,
 				54600C992240C3AE009F866F /* HomeViewController.swift */,
 			);
 			path = "1 Home";
@@ -309,6 +327,14 @@
 				543C8223224B93D700CF4184 /* Article */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		5488FAA122622DFB005FDDBD /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				5488FAA222622F37005FDDBD /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		54CB072A2261F81A005B49EC /* Storyboards */ = {
@@ -413,16 +439,22 @@
 				54BE1D8722593A8A00D24ED0 /* ArticleCell.swift in Sources */,
 				543C8225224B95C800CF4184 /* ArticleList.swift in Sources */,
 				54600CBD2240C533009F866F /* FooterActivityView.swift in Sources */,
+				5488FAA822622FE8005FDDBD /* ArticleLoader.swift in Sources */,
 				5423DAAE224EE2920061F20B /* Article.swift in Sources */,
+				5488FAA322622F37005FDDBD /* AppCoordinator.swift in Sources */,
+				5488FAA622622FCB005FDDBD /* HomeLoader.swift in Sources */,
 				547D5F19224AE4E9004D96C5 /* ArticleInfo.swift in Sources */,
+				5488FAAE22625B4F005FDDBD /* Observable.swift in Sources */,
 				54600CB32240C4FB009F866F /* AppError.swift in Sources */,
 				543B27B12256C87E00AE9C59 /* ArticleViewDelegate.swift in Sources */,
 				54600CB42240C4FB009F866F /* AppProtocols.swift in Sources */,
 				54E8C87122416B9500EB7170 /* URL.swift in Sources */,
+				5488FAAA2262327D005FDDBD /* Coordinator.swift in Sources */,
 				54600CBC2240C533009F866F /* ActivityIndicator.swift in Sources */,
 				54600CBB2240C533009F866F /* StoryboardLoadable.swift in Sources */,
 				54E8ACF22240CB9A00CEA529 /* RxExtensions.swift in Sources */,
 				54E8C86E22416B5300EB7170 /* APIService.swift in Sources */,
+				5488FAAC22623E48005FDDBD /* AppExtensions.swift in Sources */,
 				54600CC02240C539009F866F /* Defaults.swift in Sources */,
 				54E8C87222416B9500EB7170 /* Models.swift in Sources */,
 				54600CBE2240C533009F866F /* DescribableProtocol.swift in Sources */,

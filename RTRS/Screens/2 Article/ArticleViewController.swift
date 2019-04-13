@@ -10,42 +10,55 @@ import UIKit
 import WebKit
 
 class ArticleViewController: UIViewController, StoryboardLoadable {
+    static var storyboardName = "Main"
 
     @IBOutlet weak var articleView: ArticleView!
-    private var article: Article!
+    weak var delegate: ArticleViewControllerDelegate?
+    private var articleLoader: ArticleLoader!
     private var html: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-            let h = try Handlebars()
-            let html = try h.perform()
-            load(html)
-        } catch (let error) {
-            debugPrint("Handlebars error \(error)")
-        }
+        setup()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        debugPrint("Soy yo")
     }
-    
 }
 
 extension ArticleViewController {
-    func load(_ html:String) {
-        articleView.html = html
+    func setup() {
         articleView.delegate = self
+        articleLoader.content.addObserver(self) { (vc, html) in
+            vc.articleView.html = html
+        }
+        delegate?.didLoad(self)
     }
 }
 
 extension ArticleViewController {
-    class func make(with article:Article) -> ArticleViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = ArticleViewController.instantiate(fromStoryboard: storyboard)
-        vc.article = article
+    class func make(with articleLoader: ArticleLoader, delegate:ArticleViewControllerDelegate) -> ArticleViewController {
+        let vc = ArticleViewController.instantiate()
+        vc.articleLoader = articleLoader
+        vc.delegate = delegate
         return vc
     }
 }
 
-extension ArticleViewController: ArticleViewDelegate {}
+extension ArticleViewController: ArticleViewDelegate {
+    
+    func shouldStartLoad(_ sender: ArticleView, request inRequest: URLRequest, navigationType inType: WKNavigationType) -> Bool {
+        if let url = inRequest.url {
+            return delegate?.shouldAllow(url: url) ?? false
+        } else {
+            return false
+        }
+    }
+}
+
+protocol ArticleViewControllerDelegate: class {
+    func didLoad(_ articleViewController: ArticleViewController)
+    func shouldAllow(url: URL) -> Bool
+}
