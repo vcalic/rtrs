@@ -464,7 +464,17 @@ public func ?!<A>(lhs: A?, rhs: Error) throws -> A {
     }
     return value
 }
-
+/*
+ struct OptionalError: Error {}
+    do {
+        let v = try value ?! OptionalError()
+        print(v)
+ } catch {
+    print(error)
+ }
+ */
+ 
+ 
 public extension DispatchQueue {
     
     private static var _onceTracker = [String]()
@@ -520,13 +530,6 @@ extension ClassNameProtocol {
 
 extension NSObject: ClassNameProtocol {}
 
-/* Example */
-/*
-    tableView.register(cellType: MyCell.self)
-    tableView.register(cellTypes: [MyCell1.self, MyCell2.self])
- 
-    let cell = tableView.dequeueReusableCell(with: MyCell.self, for: indexPath)
-*/
 
 extension UITableView {
     public func register<T: UITableViewCell>(cellType: T.Type, bundle: Bundle? = nil) {
@@ -543,4 +546,12 @@ extension UITableView {
         return self.dequeueReusableCell(withIdentifier: type.className, for: indexPath) as! T
     }
 }
+/* Example */
+/*
+ tableView.register(cellType: MyCell.self)
+ tableView.register(cellTypes: [MyCell1.self, MyCell2.self])
+ 
+ let cell = tableView.dequeueReusableCell(with: MyCell.self, for: indexPath)
+ */
+
 

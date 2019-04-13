@@ -52,6 +52,9 @@
 		5488FAAA2262327D005FDDBD /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5488FAA92262327D005FDDBD /* Coordinator.swift */; };
 		5488FAAC22623E48005FDDBD /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5488FAAB22623E48005FDDBD /* AppExtensions.swift */; };
 		5488FAAE22625B4F005FDDBD /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5488FAAD22625B4F005FDDBD /* Observable.swift */; };
+		5488FAB022629B78005FDDBD /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5488FAAF22629B78005FDDBD /* Alert.swift */; };
+		5488FAB222629D1C005FDDBD /* TargetedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5488FAB122629D1C005FDDBD /* TargetedExtension.swift */; };
+		5488FAB422629E54005FDDBD /* ScopeFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5488FAB322629E54005FDDBD /* ScopeFunction.swift */; };
 		54BE1D832258F5B000D24ED0 /* webkit.js in Resources */ = {isa = PBXBuildFile; fileRef = 54BE1D822258F5B000D24ED0 /* webkit.js */; };
 		54BE1D8522590E2800D24ED0 /* ArticleMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BE1D8422590E2800D24ED0 /* ArticleMessages.swift */; };
 		54BE1D8722593A8A00D24ED0 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BE1D8622593A8A00D24ED0 /* ArticleCell.swift */; };
@@ -110,6 +113,9 @@
 		5488FAA92262327D005FDDBD /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		5488FAAB22623E48005FDDBD /* AppExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtensions.swift; sourceTree = "<group>"; };
 		5488FAAD22625B4F005FDDBD /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		5488FAAF22629B78005FDDBD /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		5488FAB122629D1C005FDDBD /* TargetedExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetedExtension.swift; sourceTree = "<group>"; };
+		5488FAB322629E54005FDDBD /* ScopeFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopeFunction.swift; sourceTree = "<group>"; };
 		54BE1D822258F5B000D24ED0 /* webkit.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = webkit.js; sourceTree = "<group>"; };
 		54BE1D8422590E2800D24ED0 /* ArticleMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleMessages.swift; sourceTree = "<group>"; };
 		54BE1D8622593A8A00D24ED0 /* ArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
@@ -295,6 +301,9 @@
 				5488FAA92262327D005FDDBD /* Coordinator.swift */,
 				54600CB62240C533009F866F /* StoryboardLoadable.swift */,
 				5488FAAD22625B4F005FDDBD /* Observable.swift */,
+				5488FAAF22629B78005FDDBD /* Alert.swift */,
+				5488FAB122629D1C005FDDBD /* TargetedExtension.swift */,
+				5488FAB322629E54005FDDBD /* ScopeFunction.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -445,6 +454,7 @@
 				5488FAA622622FCB005FDDBD /* HomeLoader.swift in Sources */,
 				547D5F19224AE4E9004D96C5 /* ArticleInfo.swift in Sources */,
 				5488FAAE22625B4F005FDDBD /* Observable.swift in Sources */,
+				5488FAB022629B78005FDDBD /* Alert.swift in Sources */,
 				54600CB32240C4FB009F866F /* AppError.swift in Sources */,
 				543B27B12256C87E00AE9C59 /* ArticleViewDelegate.swift in Sources */,
 				54600CB42240C4FB009F866F /* AppProtocols.swift in Sources */,
@@ -454,6 +464,8 @@
 				54600CBB2240C533009F866F /* StoryboardLoadable.swift in Sources */,
 				54E8ACF22240CB9A00CEA529 /* RxExtensions.swift in Sources */,
 				54E8C86E22416B5300EB7170 /* APIService.swift in Sources */,
+				5488FAB422629E54005FDDBD /* ScopeFunction.swift in Sources */,
+				5488FAB222629D1C005FDDBD /* TargetedExtension.swift in Sources */,
 				5488FAAC22623E48005FDDBD /* AppExtensions.swift in Sources */,
 				54600CC02240C539009F866F /* Defaults.swift in Sources */,
 				54E8C87222416B9500EB7170 /* Models.swift in Sources */,

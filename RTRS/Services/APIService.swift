@@ -8,7 +8,7 @@
 
 import Foundation
 
-class APIService {
+final class APIService {
     
     func article(id: Int, completion: @escaping(Result<Article, AppError>) -> Void) {
         let url = Services.article(id: id).value

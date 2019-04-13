@@ -9,7 +9,7 @@
 import Foundation
 
 
-class HomeLoader {
+final class HomeLoader {
     
     typealias HomeHandler = (Result<ArticleList, AppError>) -> Void
     var placeholder = ""

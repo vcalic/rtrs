@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArticleCell: UITableViewCell {
+final class ArticleCell: UITableViewCell {
     
     let cellIdentifier = "ArticleCell"
     @IBOutlet weak var articleView : ArticleView!

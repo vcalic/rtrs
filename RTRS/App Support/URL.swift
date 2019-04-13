@@ -9,7 +9,7 @@
 import Foundation
 
 
-class URLS {
+struct URLS {
     var CategoryArticles = "service=category_articles&count=30&id="
     var HomePage = "service=home_news"
     var Article = "service=article&id="

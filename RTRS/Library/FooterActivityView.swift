@@ -10,7 +10,7 @@ import UIKit
 // import RxSwift
 // import RxCocoa
 
-class FooterActivityView: UIView {
+final class FooterActivityView: UIView {
 
     var activity:UIActivityIndicatorView {
         return indicatorView

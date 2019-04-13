@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class ArticleViewController: UIViewController, StoryboardLoadable {
+final class ArticleViewController: UIViewController, StoryboardLoadable {
     static var storyboardName = "Main"
 
     @IBOutlet weak var articleView: ArticleView!

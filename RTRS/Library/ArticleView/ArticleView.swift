@@ -15,7 +15,7 @@ struct ArticleViewConstants {
 }
 
 
-class ArticleView: UIView {
+final class ArticleView: UIView {
     
     private var baseHTML = Bundle.main.bundleURL
     //var baseHTML = Bundle.main.url(forResource: "HTMLResources", withExtension: nil)!
@@ -28,14 +28,14 @@ class ArticleView: UIView {
     weak var delegate : ArticleViewDelegate?
 
     lazy var webView : WKWebView = {
-        let retval = WKWebView.init(frame: .zero, configuration: webConfig)
-        retval.translatesAutoresizingMaskIntoConstraints  = false
-        //retval.delegate = self
-        retval.uiDelegate = self
-        retval.navigationDelegate = self
-        retval.scrollView.delaysContentTouches = false
-        retval.scrollView.decelerationRate = UIScrollView.DecelerationRate.normal
-        retval.scrollView.delegate = self
+        let retval = WKWebView.init(frame: .zero, configuration: webConfig).apply {
+            $0.translatesAutoresizingMaskIntoConstraints  = false
+            $0.uiDelegate = self
+            $0.navigationDelegate = self
+            $0.scrollView.delaysContentTouches = false
+            $0.scrollView.decelerationRate = UIScrollView.DecelerationRate.normal
+            $0.scrollView.delegate = self
+        }
         return retval
     }()
     lazy private var webConfig: WKWebViewConfiguration = {
@@ -80,7 +80,6 @@ class ArticleView: UIView {
     deinit {
         webView.scrollView.removeObserver(self, forKeyPath: ArticleViewConstants.ContentSizeKey)
     }
-
 
     private func commonInit() {
         layoutMargins = UIEdgeInsets.zero

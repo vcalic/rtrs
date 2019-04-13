@@ -9,7 +9,7 @@
 import Foundation
 
 
-class ArticleLoader {
+final class ArticleLoader {
     //let article: Article
     let id: Int
     let api: APIService

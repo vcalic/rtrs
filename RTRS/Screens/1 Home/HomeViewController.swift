@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, StoryboardLoadable {
+final class HomeViewController: UIViewController, StoryboardLoadable {
 
     static var storyboardName = "Main"
     

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Default {
+final class Default {
     fileprivate let defaults = UserDefaults.standard
     static let s = Default()
     

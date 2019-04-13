@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Observable<Value> {
+final class Observable<Value> {
     private var value: Value
     private var observations = [UUID : (Value) -> Void]()
     
