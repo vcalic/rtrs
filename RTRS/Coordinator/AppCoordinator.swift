@@ -13,24 +13,31 @@ final class AppCoordinator: Coordinator  {
     private var window: UIWindow?
     private var coordinators: Coordinators = Coordinators()
     private var apiService: APIService!
+    private var routerService: RouterService!
     private var navigationController: UINavigationController!
     private var articleLoader: ArticleLoader!
     private var inTransition = false
+    private let menuCoordinator: MenuCoordinator
     
     init(with window: UIWindow?) {
         self.window = window
         self.apiService = APIService()
+        self.menuCoordinator = MenuCoordinator(apiService: apiService)
     }
     
     func start(completion: CoordinatorBlock?) {
+        routerService = RouterService(coordinator: self)
+        
         if let navigationController = UIStoryboard.main.instantiateViewController(withIdentifier: "MainNavigation") as? UINavigationController {
             self.navigationController = navigationController
             
             let homeViewController = HomeViewController.make(with: apiService, delegate:self)
             navigationController.viewControllers = [homeViewController]
-
+            
             window?.rootViewController = navigationController
             window?.makeKeyAndVisible()
+            
+            menuCoordinator.start(completion: nil)
             completion?(navigationController)
         } else {
             fatalError("Could not initialize app")
@@ -38,7 +45,15 @@ final class AppCoordinator: Coordinator  {
     }
 }
 
-
+extension AppCoordinator {
+    func openSafari(with url: URL) {
+        debugPrint("Not implemented yet. URL to open \(url)")
+    }
+    
+    func show(_ viewController: UIViewController) {
+        navigationController.show(viewController, sender: self)
+    }
+}
 extension AppCoordinator: HomeViewControllerDelegate {
     func didSelect(article: ArticleInfo, in: HomeViewController) {
         if inTransition == true {
@@ -58,7 +73,6 @@ extension AppCoordinator: HomeViewControllerDelegate {
         navigationController.show(vc, sender: self)
     }
 }
-
 extension AppCoordinator: ArticleViewControllerDelegate {
     func didLoad(_ articleViewController: ArticleViewController) {
         articleLoader.start()
@@ -81,7 +95,9 @@ extension AppCoordinator {
             {
                 openArticle(id: id)
             }
+        } else {
+            openSafari(with: url)
         }
-
     }
 }
+

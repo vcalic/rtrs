@@ -54,6 +54,24 @@ final class APIService {
             }
         }
     }
+    
+    func categories(completion:@escaping((Result<[Category], AppError>) -> Void)) {
+        let url = Services.categoriesUrl.value
+        debugPrint("URL: \(url)")
+        NetworkService.getData(url: url) { (result) in
+            var retval: Result<[Category], AppError>
+            do {
+                let list = try result.decoded() as [Category]
+                retval = .success(list)
+            } catch {
+                debugPrint("Error in menugetter: \(error)")
+                retval = .failure(AppError.emptyData)
+            }
+            DispatchQueue.main.async {
+                completion(retval)
+            }
+        }
+    }
 }
 
 extension APIService {
