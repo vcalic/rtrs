@@ -12,6 +12,7 @@ final class MenuViewController: UITableViewController, StoryboardLoadable {
 
     static var storyboardName = "Menu"
     private static let reuseIdentifier = "MenuCell"
+    weak var delegate: MenuViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,10 +99,14 @@ final class MenuViewController: UITableViewController, StoryboardLoadable {
 extension MenuViewController {
     class func make() -> MenuViewController {
         let vc = MenuViewController.instantiate(fromStoryboard: UIStoryboard.menu)
-
         return vc
     }
     @objc func toggleMenu() {
         debugPrint("Toggle menu")
+        delegate?.didPressToggleMenu(self)
     }
+}
+
+protocol MenuViewControllerDelegate: class {
+    func didPressToggleMenu(_ vc: MenuViewController)
 }

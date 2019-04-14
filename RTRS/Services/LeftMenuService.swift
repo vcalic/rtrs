@@ -13,6 +13,7 @@ import SideMenu
 final class LeftMenuService: Appliable {
     private let sideMenuManager: SideMenuManager = SideMenuManager()
     private var isMenuShown:Bool = false
+    private var holdingViewController: UIViewController?
 
     func addPanGesture(toView view : UIView) {
         self.sideMenuManager.menuAddPanGestureToPresent(toView: view)
@@ -33,10 +34,16 @@ final class LeftMenuService: Appliable {
     }
     
     func toggleMenu(in vc: UIViewController) {
+        debugPrint("Toggle in left")
         if isMenuShown {
-            vc.dismiss(animated: true, completion: nil)
+            if let hvc = holdingViewController {
+                hvc.dismiss(animated: true, completion: nil)
+            } else {
+                debugPrint("Weird error")
+            }
         } else {
             vc.show(sideMenuManager.menuLeftNavigationController!, sender: self)
+            holdingViewController = vc
         }
 
     }

@@ -20,15 +20,12 @@ final class AppCoordinator: Coordinator  {
     private var inTransition = false
     private let menuCoordinator: MenuCoordinator
     private let menuService: LeftMenuService
-    private let sideMenuManager: SideMenuManager
-    private var isMenuShown:Bool = false
     
     init(with window: UIWindow?) {
         self.window = window
         self.apiService = APIService()
-        self.menuCoordinator = MenuCoordinator(apiService: apiService)
-        self.sideMenuManager = SideMenuManager()
         self.menuService = LeftMenuService()
+        self.menuCoordinator = MenuCoordinator(apiService: apiService, menuService: self.menuService)
     }
     
     func start(completion: CoordinatorBlock?) {
@@ -37,7 +34,6 @@ final class AppCoordinator: Coordinator  {
         
         if let navigationController = UIStoryboard.main.instantiateViewController(withIdentifier: "MainNavigation") as? UINavigationController {
             self.navigationController = navigationController
-            
             
             let homeViewController = HomeViewController.make(with: apiService, delegate:self)
             navigationController.viewControllers = [homeViewController]
