@@ -8,13 +8,19 @@
 
 import UIKit
 
-final class MenuViewController: UITableViewController {
+final class MenuViewController: UITableViewController, StoryboardLoadable {
 
     static var storyboardName = "Menu"
     private static let reuseIdentifier = "MenuCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let leftButton = UIBarButtonItem(barButtonSystemItem: .action,
+                                         target: self,
+                                         action: #selector(toggleMenu))
+        navigationItem.leftBarButtonItem = leftButton
+
     }
 
     // MARK: - Table view data source
@@ -86,4 +92,16 @@ final class MenuViewController: UITableViewController {
 
 
 
+}
+
+
+extension MenuViewController {
+    class func make() -> MenuViewController {
+        let vc = MenuViewController.instantiate(fromStoryboard: UIStoryboard.menu)
+
+        return vc
+    }
+    @objc func toggleMenu() {
+        debugPrint("Toggle menu")
+    }
 }

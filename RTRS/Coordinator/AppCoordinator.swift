@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SideMenu
 
 final class AppCoordinator: Coordinator  {
-    
+    var parent: Coordinator? = nil
     private var window: UIWindow?
     private var coordinators: Coordinators = Coordinators()
     private var apiService: APIService!
@@ -18,18 +19,25 @@ final class AppCoordinator: Coordinator  {
     private var articleLoader: ArticleLoader!
     private var inTransition = false
     private let menuCoordinator: MenuCoordinator
+    private let menuService: LeftMenuService
+    private let sideMenuManager: SideMenuManager
+    private var isMenuShown:Bool = false
     
     init(with window: UIWindow?) {
         self.window = window
         self.apiService = APIService()
         self.menuCoordinator = MenuCoordinator(apiService: apiService)
+        self.sideMenuManager = SideMenuManager()
+        self.menuService = LeftMenuService()
     }
     
     func start(completion: CoordinatorBlock?) {
         routerService = RouterService(coordinator: self)
+        menuCoordinator.parent = self
         
         if let navigationController = UIStoryboard.main.instantiateViewController(withIdentifier: "MainNavigation") as? UINavigationController {
             self.navigationController = navigationController
+            
             
             let homeViewController = HomeViewController.make(with: apiService, delegate:self)
             navigationController.viewControllers = [homeViewController]
@@ -37,8 +45,14 @@ final class AppCoordinator: Coordinator  {
             window?.rootViewController = navigationController
             window?.makeKeyAndVisible()
             
-            menuCoordinator.start(completion: nil)
-            completion?(navigationController)
+            menuCoordinator.start { (vc) in
+                self.menuService.apply() {
+                    $0.create(with: vc)
+                    $0.addPanGesture(toView: self.navigationController.navigationBar)
+                }
+                completion?(navigationController)
+            }
+            
         } else {
             fatalError("Could not initialize app")
         }
@@ -55,6 +69,10 @@ extension AppCoordinator {
     }
 }
 extension AppCoordinator: HomeViewControllerDelegate {
+    func toggleMenu(in homeViewController: HomeViewController) {
+        menuService.toggleMenu(in: navigationController)
+    }
+    
     func didSelect(article: ArticleInfo, in: HomeViewController) {
         if inTransition == true {
             return
@@ -72,6 +90,8 @@ extension AppCoordinator: HomeViewControllerDelegate {
         let vc = ArticleViewController.make(with: articleLoader, delegate: self)
         navigationController.show(vc, sender: self)
     }
+
+    
 }
 extension AppCoordinator: ArticleViewControllerDelegate {
     func didLoad(_ articleViewController: ArticleViewController) {
@@ -79,7 +99,7 @@ extension AppCoordinator: ArticleViewControllerDelegate {
     }
     
     func shouldAllow(url: URL) -> Bool {
-        route(for: url)
+        route(for: url) // Call Router Service instead
         return false
     }
 }
@@ -100,4 +120,5 @@ extension AppCoordinator {
         }
     }
 }
+
 

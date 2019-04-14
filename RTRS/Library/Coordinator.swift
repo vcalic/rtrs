@@ -12,6 +12,7 @@ typealias CoordinatorBlock = (UIViewController) -> Void
 
 protocol Coordinator: class {
     func start(completion: CoordinatorBlock?)
+    var parent: Coordinator? {get}
 }
 
 struct Coordinators {

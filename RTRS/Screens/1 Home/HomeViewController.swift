@@ -19,7 +19,16 @@ final class HomeViewController: UIViewController, StoryboardLoadable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = ""
         loadData()
+        
+        let leftButton = UIBarButtonItem(barButtonSystemItem: .action,
+                                         target: self,
+                                         action: #selector(openMenu))
+        navigationItem.leftBarButtonItem = leftButton
+    }
+    @objc func openMenu(_ sender: Any) {
+        delegate?.toggleMenu(in: self)
     }
     
     func loadData() {
@@ -64,4 +73,5 @@ extension HomeViewController {
 }
 protocol HomeViewControllerDelegate: class {
     func didSelect(article: ArticleInfo, in: HomeViewController)
+    func toggleMenu(in homeViewController: HomeViewController)
 }
