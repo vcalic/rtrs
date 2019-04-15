@@ -33,6 +33,19 @@ final class LeftMenuService: Appliable {
         }
     }
     
+    func closedMenu() {
+        if isMenuShown {
+            if let hvc = holdingViewController {
+                hvc.dismiss(animated: true, completion: nil)
+            } else {
+                debugPrint("No presenting view controller")
+            }
+        } else {
+                debugPrint("Menu not presented")
+        }
+
+    }
+    
     func toggleMenu(in vc: UIViewController) {
         debugPrint("Toggle in left")
         if isMenuShown {

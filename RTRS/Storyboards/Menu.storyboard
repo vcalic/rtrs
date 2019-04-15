@@ -4,14 +4,15 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="kRo-RX-Idh">
             <objects>
-                <tableViewController storyboardIdentifier="MenuViewController" id="eAj-Pf-JoX" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MenuViewController" id="eAj-Pf-JoX" customClass="MenuViewController" customModule="RTRS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mYl-nR-7GY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,12 +36,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KUD-gx-bGQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-410" y="167"/>
+            <point key="canvasLocation" x="-696" y="167"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dXs-TI-xgJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ek2-tS-9it" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavigation" automaticallyAdjustsScrollViewInsets="NO" id="Ek2-tS-9it" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UBD-4F-VY7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -53,7 +54,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ob7-1p-Ve4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1164" y="167"/>
+            <point key="canvasLocation" x="-1442" y="167"/>
         </scene>
     </scenes>
 </document>

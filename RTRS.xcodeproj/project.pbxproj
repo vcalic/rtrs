@@ -58,14 +58,14 @@
 		54BE1D832258F5B000D24ED0 /* webkit.js in Resources */ = {isa = PBXBuildFile; fileRef = 54BE1D822258F5B000D24ED0 /* webkit.js */; };
 		54BE1D8522590E2800D24ED0 /* ArticleMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BE1D8422590E2800D24ED0 /* ArticleMessages.swift */; };
 		54BE1D8722593A8A00D24ED0 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BE1D8622593A8A00D24ED0 /* ArticleCell.swift */; };
-		54C156C32263BE18000AE979 /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C156C22263BE18000AE979 /* MenuCoordinator.swift */; };
-		54C156C52263BE2D000AE979 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54C156C42263BE2D000AE979 /* Menu.storyboard */; };
-		54C156C72263BE33000AE979 /* RouterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C156C62263BE33000AE979 /* RouterService.swift */; };
 		54C156C92263BE5F000AE979 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C156C82263BE5F000AE979 /* Category.swift */; };
 		54C156CC2263C053000AE979 /* SideMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54C156CB2263C053000AE979 /* SideMenu.framework */; };
 		54C156D02263CF2B000AE979 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C156CE2263CF2A000AE979 /* MenuViewController.swift */; };
 		54C156D12263CF2B000AE979 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C156CF2263CF2B000AE979 /* MenuCell.swift */; };
 		54C156D32263EE30000AE979 /* LeftMenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C156D22263EE30000AE979 /* LeftMenuService.swift */; };
+		54E72FD42264738900A05EAF /* RouterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E72FD32264738900A05EAF /* RouterService.swift */; };
+		54E72FD62264740000A05EAF /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E72FD52264740000A05EAF /* MenuCoordinator.swift */; };
+		54E72FD82264743700A05EAF /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54E72FD72264743700A05EAF /* Menu.storyboard */; };
 		54E8ACF22240CB9A00CEA529 /* RxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E8ACF12240CB9A00CEA529 /* RxExtensions.swift */; };
 		54E8ACF42240CBE900CEA529 /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E8ACF32240CBE900CEA529 /* PushService.swift */; };
 		54E8C86E22416B5300EB7170 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E8C86D22416B5300EB7170 /* APIService.swift */; };
@@ -127,14 +127,14 @@
 		54BE1D822258F5B000D24ED0 /* webkit.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = webkit.js; sourceTree = "<group>"; };
 		54BE1D8422590E2800D24ED0 /* ArticleMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleMessages.swift; sourceTree = "<group>"; };
 		54BE1D8622593A8A00D24ED0 /* ArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
-		54C156C22263BE18000AE979 /* MenuCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuCoordinator.swift; path = ../../../../Desktop/MenuCoordinator.swift; sourceTree = "<group>"; };
-		54C156C42263BE2D000AE979 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Menu.storyboard; path = ../../../../Desktop/Menu.storyboard; sourceTree = "<group>"; };
-		54C156C62263BE33000AE979 /* RouterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouterService.swift; path = ../../../../Desktop/RouterService.swift; sourceTree = "<group>"; };
 		54C156C82263BE5F000AE979 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		54C156CB2263C053000AE979 /* SideMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SideMenu.framework; sourceTree = "<group>"; };
 		54C156CE2263CF2A000AE979 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		54C156CF2263CF2B000AE979 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		54C156D22263EE30000AE979 /* LeftMenuService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuService.swift; sourceTree = "<group>"; };
+		54E72FD32264738900A05EAF /* RouterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterService.swift; sourceTree = "<group>"; };
+		54E72FD52264740000A05EAF /* MenuCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
+		54E72FD72264743700A05EAF /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		54E8ACF12240CB9A00CEA529 /* RxExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxExtensions.swift; sourceTree = "<group>"; };
 		54E8ACF32240CBE900CEA529 /* PushService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushService.swift; sourceTree = "<group>"; };
 		54E8C86D22416B5300EB7170 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -298,7 +298,7 @@
 		54600CAD2240C446009F866F /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				54C156C62263BE33000AE979 /* RouterService.swift */,
+				54E72FD32264738900A05EAF /* RouterService.swift */,
 				54E8ACF32240CBE900CEA529 /* PushService.swift */,
 				54E8C86D22416B5300EB7170 /* APIService.swift */,
 				543C8226224BA8CB00CF4184 /* NetworkService.swift */,
@@ -363,7 +363,7 @@
 		5488FAA122622DFB005FDDBD /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				54C156C22263BE18000AE979 /* MenuCoordinator.swift */,
+				54E72FD52264740000A05EAF /* MenuCoordinator.swift */,
 				5488FAA222622F37005FDDBD /* AppCoordinator.swift */,
 			);
 			path = Coordinator;
@@ -381,8 +381,8 @@
 		54CB072A2261F81A005B49EC /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				54C156C42263BE2D000AE979 /* Menu.storyboard */,
 				54600C9B2240C3AE009F866F /* Main.storyboard */,
+				54E72FD72264743700A05EAF /* Menu.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -448,7 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				542DC2F722556A8800665DBF /* normalize.css in Resources */,
-				54C156C52263BE2D000AE979 /* Menu.storyboard in Resources */,
+				54E72FD82264743700A05EAF /* Menu.storyboard in Resources */,
 				542DC3062256880E00665DBF /* body.html in Resources */,
 				542DC3042256880800665DBF /* video.html in Resources */,
 				542DC3022256880000665DBF /* lead.html in Resources */,
@@ -513,8 +513,8 @@
 				5488FAAE22625B4F005FDDBD /* Observable.swift in Sources */,
 				54C156D02263CF2B000AE979 /* MenuViewController.swift in Sources */,
 				54C156D12263CF2B000AE979 /* MenuCell.swift in Sources */,
+				54E72FD62264740000A05EAF /* MenuCoordinator.swift in Sources */,
 				54C156D32263EE30000AE979 /* LeftMenuService.swift in Sources */,
-				54C156C32263BE18000AE979 /* MenuCoordinator.swift in Sources */,
 				5488FAB022629B78005FDDBD /* Alert.swift in Sources */,
 				54600CB32240C4FB009F866F /* AppError.swift in Sources */,
 				543B27B12256C87E00AE9C59 /* ArticleViewDelegate.swift in Sources */,
@@ -537,7 +537,7 @@
 				543B27A62256ACC900AE9C59 /* TemplateType.swift in Sources */,
 				54C156C92263BE5F000AE979 /* Category.swift in Sources */,
 				54600CC22240C53E009F866F /* Extensions.swift in Sources */,
-				54C156C72263BE33000AE979 /* RouterService.swift in Sources */,
+				54E72FD42264738900A05EAF /* RouterService.swift in Sources */,
 				54E8ACF42240CBE900CEA529 /* PushService.swift in Sources */,
 				54600CBA2240C533009F866F /* ListenerProtocol.swift in Sources */,
 				54216D67224FE0B000B05659 /* Mustache.swift in Sources */,
