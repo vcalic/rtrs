@@ -66,6 +66,7 @@
 		54E72FD42264738900A05EAF /* RouterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E72FD32264738900A05EAF /* RouterService.swift */; };
 		54E72FD62264740000A05EAF /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E72FD52264740000A05EAF /* MenuCoordinator.swift */; };
 		54E72FD82264743700A05EAF /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54E72FD72264743700A05EAF /* Menu.storyboard */; };
+		54E72FDA226484AF00A05EAF /* MenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E72FD9226484AF00A05EAF /* MenuDataSource.swift */; };
 		54E8ACF22240CB9A00CEA529 /* RxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E8ACF12240CB9A00CEA529 /* RxExtensions.swift */; };
 		54E8ACF42240CBE900CEA529 /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E8ACF32240CBE900CEA529 /* PushService.swift */; };
 		54E8C86E22416B5300EB7170 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E8C86D22416B5300EB7170 /* APIService.swift */; };
@@ -135,6 +136,7 @@
 		54E72FD32264738900A05EAF /* RouterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterService.swift; sourceTree = "<group>"; };
 		54E72FD52264740000A05EAF /* MenuCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
 		54E72FD72264743700A05EAF /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		54E72FD9226484AF00A05EAF /* MenuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDataSource.swift; sourceTree = "<group>"; };
 		54E8ACF12240CB9A00CEA529 /* RxExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxExtensions.swift; sourceTree = "<group>"; };
 		54E8ACF32240CBE900CEA529 /* PushService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushService.swift; sourceTree = "<group>"; };
 		54E8C86D22416B5300EB7170 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 			children = (
 				54C156CF2263CF2B000AE979 /* MenuCell.swift */,
 				54C156CE2263CF2A000AE979 /* MenuViewController.swift */,
+				54E72FD9226484AF00A05EAF /* MenuDataSource.swift */,
 			);
 			path = "0 Menu";
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				54E8ACF42240CBE900CEA529 /* PushService.swift in Sources */,
 				54600CBA2240C533009F866F /* ListenerProtocol.swift in Sources */,
 				54216D67224FE0B000B05659 /* Mustache.swift in Sources */,
+				54E72FDA226484AF00A05EAF /* MenuDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

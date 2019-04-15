@@ -47,7 +47,6 @@ final class LeftMenuService: Appliable {
     }
     
     func toggleMenu(in vc: UIViewController) {
-        debugPrint("Toggle in left")
         if isMenuShown {
             if let hvc = holdingViewController {
                 hvc.dismiss(animated: true, completion: nil)
@@ -65,23 +64,23 @@ final class LeftMenuService: Appliable {
 extension LeftMenuService: UISideMenuNavigationControllerDelegate {
     
     func sideMenuWillAppear(menu: UISideMenuNavigationController, animated: Bool) {
-        print("SideMenu Appearing! (animated: \(animated))")
+        // print("SideMenu Appearing! (animated: \(animated))")
         isMenuShown = true
         
     }
     
     func sideMenuDidAppear(menu: UISideMenuNavigationController, animated: Bool) {
-        print("SideMenu Appeared! (animated: \(animated))")
+        // print("SideMenu Appeared! (animated: \(animated))")
     }
     
     func sideMenuWillDisappear(menu: UISideMenuNavigationController, animated: Bool) {
-        print("SideMenu Disappearing! (animated: \(animated))")
+        // print("SideMenu Disappearing! (animated: \(animated))")
         isMenuShown = false
         
     }
     
     func sideMenuDidDisappear(menu: UISideMenuNavigationController, animated: Bool) {
-        print("SideMenu Disappeared! (animated: \(animated))")
+        // print("SideMenu Disappeared! (animated: \(animated))")
         isMenuShown = false
     }
     
