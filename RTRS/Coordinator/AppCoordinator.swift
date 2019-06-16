@@ -19,6 +19,7 @@ final class AppCoordinator: Coordinator  {
     private var articleLoader: ArticleLoader!
     private var inTransition = false
     private let menuCoordinator: MenuCoordinator
+    private let mainCoordinator: MainCoordinator
     private let menuService: LeftMenuService
     
     init(with window: UIWindow?) {
@@ -26,6 +27,7 @@ final class AppCoordinator: Coordinator  {
         self.apiService = APIService()
         self.menuService = LeftMenuService()
         self.menuCoordinator = MenuCoordinator(apiService: apiService, menuService: self.menuService)
+        self.mainCoordinator = MainCoordinator(apiService: apiService)
     }
     
     func start(completion: CoordinatorBlock?) {

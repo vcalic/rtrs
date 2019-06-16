@@ -14,6 +14,7 @@ final class MenuViewController: UITableViewController, StoryboardLoadable {
     private static let reuseIdentifier = "MenuCell"
     weak var delegate: MenuViewControllerDelegate?
     let dataSource = SectionMenu.generate()
+    var selected:AppSections?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,8 @@ final class MenuViewController: UITableViewController, StoryboardLoadable {
      }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UIApplication.shared.sendAction(#selector(AppActions.didSelectMenuItem(_:)), to: nil, from: self, for: nil)
+        selected = dataSource[indexPath.row];
         delegate?.didSelectSection(section: dataSource[indexPath.row], vc: self)
     }
 }
@@ -55,7 +58,6 @@ extension MenuViewController {
         return vc
     }
     @objc func toggleMenu() {
-        debugPrint("Toggle menu")
         delegate?.didPressToggleMenu(self)
     }
 }
@@ -63,4 +65,8 @@ extension MenuViewController {
 protocol MenuViewControllerDelegate: class {
     func didPressToggleMenu(_ vc: MenuViewController)
     func didSelectSection(section: AppSections, vc: MenuViewController)
+}
+
+@objc protocol AppActions: AnyObject {
+    func didSelectMenuItem(_ sender: MenuViewController)
 }

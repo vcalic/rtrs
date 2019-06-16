@@ -39,7 +39,7 @@ final class MenuCoordinator: Coordinator {
 
 extension MenuCoordinator: MenuViewControllerDelegate {
     func didSelectSection(section: AppSections, vc: MenuViewController) {
-        debugPrint("Choose section \(section)")
+        //debugPrint("Choose section \(section)")
         menuService.closedMenu()
     }
     
@@ -47,4 +47,16 @@ extension MenuCoordinator: MenuViewControllerDelegate {
         debugPrint("Did press toggle")
         menuService.closedMenu()
     }
+}
+
+extension MenuCoordinator: AppActions {
+    func didSelectMenuItem(_ sender: MenuViewController) {
+        debugPrint("Called!!!!!")
+        if let object = sender.selected {
+            debugPrint("Prošao: \(object)");
+        }
+
+    }
+    
+    
 }

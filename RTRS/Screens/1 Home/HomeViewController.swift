@@ -19,6 +19,7 @@ final class HomeViewController: UIViewController, StoryboardLoadable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
         title = ""
         loadData()
         
@@ -27,6 +28,14 @@ final class HomeViewController: UIViewController, StoryboardLoadable {
                                          action: #selector(openMenu))
         navigationItem.leftBarButtonItem = leftButton
     }
+    
+    func setup() {
+        BigCell.register(in: tableView)
+        StoryCell.register(in: tableView)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44
+    }
+    
     @objc func openMenu(_ sender: Any) {
         delegate?.toggleMenu(in: self)
     }
@@ -50,9 +59,18 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath)
-        cell.textLabel?.text = dataSource[indexPath.row].title
-        return cell
+        if indexPath.row == 0 {
+            let cell:BigCell = tableView.dequeue(for: indexPath)
+            let model = BigCellViewModel.init(with: dataSource[indexPath.row])
+            cell.configure(with: model)
+            return cell
+        }
+        else {
+            let cell:StoryCell = tableView.dequeue(for: indexPath)
+            let model = StoryCellViewModel.init(with: dataSource[indexPath.row])
+            cell.configure(with: model)
+            return cell
+        }
     }
 }
 
