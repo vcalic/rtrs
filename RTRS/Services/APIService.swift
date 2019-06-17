@@ -24,6 +24,14 @@ final class APIService {
         }
     }
     
+    func fetchArticle(id: Int, completion: @escaping(Result<Data, AppError>) -> Void) {
+        let url = Services.article(id: id).value
+        NetworkService.getData(url: url) { (result) in
+            guard let result = try? result.get() else { DispatchQueue.main.async {completion(.failure(.emptyData))}; return}
+            completion(.success(result))
+        }
+    }
+
     func homePage(id:Int = -1, count:Int=30, completion: @escaping(Result<ArticleList, Error>) -> Void) {
         let url = Services.categoryArticles(id: id, count: count).value
         NetworkService.getData(url: url) { (result) in

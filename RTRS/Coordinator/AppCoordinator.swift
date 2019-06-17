@@ -14,6 +14,7 @@ final class AppCoordinator: Coordinator  {
     private var window: UIWindow?
     private var coordinators: Coordinators = Coordinators()
     private var apiService: APIService!
+    private var articleService: ArticleService!
     private var routerService: RouterService!
     private var navigationController: UINavigationController!
     private var articleLoader: ArticleLoader!
@@ -26,8 +27,13 @@ final class AppCoordinator: Coordinator  {
         self.window = window
         self.apiService = APIService()
         self.menuService = LeftMenuService()
+        do {
+            self.articleService = try ArticleService(apiService: self.apiService)
+        } catch (let error) {
+            fatalError("Could not initialize articleService \(error)")
+        }
         self.menuCoordinator = MenuCoordinator(apiService: apiService, menuService: self.menuService)
-        self.mainCoordinator = MainCoordinator(apiService: apiService)
+        self.mainCoordinator = MainCoordinator(apiService: apiService, articleService: articleService)
     }
     
     func start(completion: CoordinatorBlock?) {
@@ -77,20 +83,36 @@ extension AppCoordinator: HomeViewControllerDelegate {
         }
         inTransition = true
         let id = Int(article.id)!
-        articleLoader = try! ArticleLoader(apiService: apiService, articleId: id)
+        articleLoader = try! ArticleLoader(articleService: articleService, articleId: id)
         let vc = ArticleViewController.make(with: articleLoader, delegate: self)
         navigationController.show(vc, sender: self)
         inTransition = false
     }
     
     func openArticle(id: Int) {
-        articleLoader = try! ArticleLoader(apiService: apiService, articleId: id)
-        let vc = ArticleViewController.make(with: articleLoader, delegate: self)
-        navigationController.show(vc, sender: self)
+        do {
+            articleLoader = try ArticleLoader(articleService: articleService, articleId: id)
+            let vc = ArticleViewController.make(with: articleLoader, delegate: self)
+            navigationController.show(vc, sender: self)
+        } catch (let error) {
+            debugPrint("Could not openArticle: \(error)")
+        }
     }
 
     
 }
+
+extension AppCoordinator: ArticleSwipeViewControllerDelegate {
+    func configure(articleViewController: ArticleViewController, info: ArticleInfo, index: Int) {
+        
+    }
+    
+    func makeArticleViewController() -> ArticleViewController {
+        let vc = ArticleViewController.make(with: articleLoader, delegate: self)
+        return vc
+    }
+}
+
 extension AppCoordinator: ArticleViewControllerDelegate {
     func didLoad(_ articleViewController: ArticleViewController) {
         articleLoader.start()

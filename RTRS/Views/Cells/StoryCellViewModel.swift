@@ -16,8 +16,8 @@ struct StoryCellViewModel {
 
 extension StoryCellViewModel {
     init(with articleInfo: ArticleInfo) {
-        title = articleInfo.title
-        introText = articleInfo.introText
+        title = articleInfo.title.decodeHTMLEntities
+        introText = articleInfo.introText.decodeHTMLEntities
         image = URL(string: articleInfo.smallImageUrl)
     }
 }

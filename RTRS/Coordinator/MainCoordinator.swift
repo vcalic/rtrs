@@ -10,17 +10,15 @@ import Foundation
 
 final class MainCoordinator: Coordinator {
     var parent: Coordinator?
-    private let apiService:APIService
+    private let apiService: APIService
+    private let articleService: ArticleService
     
-    init(apiService: APIService) {
+    init(apiService: APIService, articleService: ArticleService) {
         self.apiService = apiService
+        self.articleService = articleService
     }
 
     func start(completion: CoordinatorBlock?) {
         
     }
-    
-    
-    
-    
 }

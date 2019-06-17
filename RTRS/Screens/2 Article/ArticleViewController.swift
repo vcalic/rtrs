@@ -9,16 +9,21 @@
 import UIKit
 import WebKit
 
-final class ArticleViewController: UIViewController, StoryboardLoadable {
+final class ArticleViewController: UIViewController, StoryboardLoadable, PageViewContent {
+
     static var storyboardName = "Main"
 
     @IBOutlet weak var articleView: ArticleView!
     weak var delegate: ArticleViewControllerDelegate?
+    var topView: UIView?
+    var index: Int = 0
+    
     private var articleLoader: ArticleLoader!
     private var html: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        topView = view
         setup()
     }
     

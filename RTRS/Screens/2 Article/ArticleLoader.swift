@@ -8,27 +8,23 @@
 
 import Foundation
 
-
 final class ArticleLoader {
     //let article: Article
     let id: Int
-    let api: APIService
-    let handlebars: Handlebars
+    let articleService: ArticleService
     var content: Observable<String> = Observable(value: "")
 
-    init(apiService: APIService, articleId: Int) throws {
+    init(articleService: ArticleService, articleId: Int) throws {
         self.id = articleId
-        api = apiService
-        handlebars = try Handlebars()
+        self.articleService = articleService
     }
     func start() {
-        api.article(id: id) { [unowned self] (result) in
+        articleService.getArticle(id: id) { [unowned self] (result) in
             do {
-                let article = try result.get()
-                let html = try self.handlebars.perform(article: article)
-                self.content.update(with: html)
+                let parsedArticle = try result.get()
+                self.content.update(with: parsedArticle.html)
             } catch (let error) {
-                debugPrint("Handlebars error \(error)")
+                debugPrint("Got error \(error)")
             }
         }
     }

@@ -57,6 +57,10 @@
 		5488FAB022629B78005FDDBD /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5488FAAF22629B78005FDDBD /* Alert.swift */; };
 		5488FAB222629D1C005FDDBD /* TargetedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5488FAB122629D1C005FDDBD /* TargetedExtension.swift */; };
 		5488FAB422629E54005FDDBD /* ScopeFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5488FAB322629E54005FDDBD /* ScopeFunction.swift */; };
+		54AEA9C822B7E4B300F187AB /* PageViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AEA9C722B7E4B300F187AB /* PageViewDataSource.swift */; };
+		54AEA9CA22B7FD4700F187AB /* String+DecodeEntitites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AEA9C922B7FD4700F187AB /* String+DecodeEntitites.swift */; };
+		54AEA9CF22B80BFD00F187AB /* ArticleSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AEA9CE22B80BFD00F187AB /* ArticleSwipeViewController.swift */; };
+		54AEA9D122B81DC700F187AB /* ArticleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AEA9D022B81DC700F187AB /* ArticleService.swift */; };
 		54BDE9BE22B6A0610005FB9B /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BDE9BC22B6A0610005FB9B /* StoryCell.swift */; };
 		54BDE9BF22B6A0610005FB9B /* StoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54BDE9BD22B6A0610005FB9B /* StoryCell.xib */; };
 		54BDE9C122B6A0B20005FB9B /* WRCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BDE9C022B6A0B20005FB9B /* WRCell.swift */; };
@@ -137,6 +141,10 @@
 		5488FAAF22629B78005FDDBD /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		5488FAB122629D1C005FDDBD /* TargetedExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetedExtension.swift; sourceTree = "<group>"; };
 		5488FAB322629E54005FDDBD /* ScopeFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopeFunction.swift; sourceTree = "<group>"; };
+		54AEA9C722B7E4B300F187AB /* PageViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewDataSource.swift; sourceTree = "<group>"; };
+		54AEA9C922B7FD4700F187AB /* String+DecodeEntitites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DecodeEntitites.swift"; sourceTree = "<group>"; };
+		54AEA9CE22B80BFD00F187AB /* ArticleSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleSwipeViewController.swift; sourceTree = "<group>"; };
+		54AEA9D022B81DC700F187AB /* ArticleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleService.swift; sourceTree = "<group>"; };
 		54BDE9BC22B6A0610005FB9B /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 		54BDE9BD22B6A0610005FB9B /* StoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryCell.xib; sourceTree = "<group>"; };
 		54BDE9C022B6A0B20005FB9B /* WRCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRCell.swift; sourceTree = "<group>"; };
@@ -268,6 +276,7 @@
 		545E7AF622B58F3700D1C3AC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				54AEA9CB22B80BCF00F187AB /* ViewControllers */,
 				545E7AF722B58F4000D1C3AC /* Cells */,
 			);
 			path = Views;
@@ -348,6 +357,7 @@
 				54E8C86D22416B5300EB7170 /* APIService.swift */,
 				543C8226224BA8CB00CF4184 /* NetworkService.swift */,
 				54C156D22263EE30000AE979 /* LeftMenuService.swift */,
+				54AEA9D022B81DC700F187AB /* ArticleService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -372,6 +382,8 @@
 				5488FAB122629D1C005FDDBD /* TargetedExtension.swift */,
 				5488FAB322629E54005FDDBD /* ScopeFunction.swift */,
 				54BDE9C822B6E3180005FB9B /* VerticalTopAlignLabel.swift */,
+				54AEA9C722B7E4B300F187AB /* PageViewDataSource.swift */,
+				54AEA9C922B7FD4700F187AB /* String+DecodeEntitites.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -416,6 +428,14 @@
 				54CF2ACE226DF6A100EB6581 /* MainCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		54AEA9CB22B80BCF00F187AB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				54AEA9CE22B80BFD00F187AB /* ArticleSwipeViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		54C156CD2263CF07000AE979 /* 0 Menu */ = {
@@ -566,17 +586,20 @@
 				5488FAA322622F37005FDDBD /* AppCoordinator.swift in Sources */,
 				5488FAA622622FCB005FDDBD /* HomeLoader.swift in Sources */,
 				547D5F19224AE4E9004D96C5 /* ArticleInfo.swift in Sources */,
+				54AEA9CA22B7FD4700F187AB /* String+DecodeEntitites.swift in Sources */,
 				5488FAAE22625B4F005FDDBD /* Observable.swift in Sources */,
 				54C156D02263CF2B000AE979 /* MenuViewController.swift in Sources */,
 				54BDE9BE22B6A0610005FB9B /* StoryCell.swift in Sources */,
 				54BDE9C122B6A0B20005FB9B /* WRCell.swift in Sources */,
 				54C156D12263CF2B000AE979 /* MenuCell.swift in Sources */,
+				54AEA9D122B81DC700F187AB /* ArticleService.swift in Sources */,
 				54E72FD62264740000A05EAF /* MenuCoordinator.swift in Sources */,
 				54C156D32263EE30000AE979 /* LeftMenuService.swift in Sources */,
 				54BDE9C522B6CCAC0005FB9B /* Theme.swift in Sources */,
 				5488FAB022629B78005FDDBD /* Alert.swift in Sources */,
 				54600CB32240C4FB009F866F /* AppError.swift in Sources */,
 				543B27B12256C87E00AE9C59 /* ArticleViewDelegate.swift in Sources */,
+				54AEA9CF22B80BFD00F187AB /* ArticleSwipeViewController.swift in Sources */,
 				54600CB42240C4FB009F866F /* AppProtocols.swift in Sources */,
 				54E8C87122416B9500EB7170 /* URL.swift in Sources */,
 				5488FAAA2262327D005FDDBD /* Coordinator.swift in Sources */,
@@ -586,6 +609,7 @@
 				54BDE9C922B6E3180005FB9B /* VerticalTopAlignLabel.swift in Sources */,
 				54E8C86E22416B5300EB7170 /* APIService.swift in Sources */,
 				5488FAB422629E54005FDDBD /* ScopeFunction.swift in Sources */,
+				54AEA9C822B7E4B300F187AB /* PageViewDataSource.swift in Sources */,
 				5488FAB222629D1C005FDDBD /* TargetedExtension.swift in Sources */,
 				5488FAAC22623E48005FDDBD /* AppExtensions.swift in Sources */,
 				54600CC02240C539009F866F /* Defaults.swift in Sources */,

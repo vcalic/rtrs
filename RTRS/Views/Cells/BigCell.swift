@@ -33,7 +33,7 @@ struct BigCellViewModel {
 
 extension BigCellViewModel {
     init(with article: ArticleInfo) {
-        title = article.title
-        image = URL(string: article.smallImageUrl)
+        title = article.title.decodeHTMLEntities
+        image = URL(string: article.largeImageUrl)
     }
 }

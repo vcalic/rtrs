@@ -61,13 +61,13 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell:BigCell = tableView.dequeue(for: indexPath)
-            let model = BigCellViewModel.init(with: dataSource[indexPath.row])
+            let model = BigCellViewModel(with: dataSource[indexPath.row])
             cell.configure(with: model)
             return cell
         }
         else {
             let cell:StoryCell = tableView.dequeue(for: indexPath)
-            let model = StoryCellViewModel.init(with: dataSource[indexPath.row])
+            let model = StoryCellViewModel(with: dataSource[indexPath.row])
             cell.configure(with: model)
             return cell
         }

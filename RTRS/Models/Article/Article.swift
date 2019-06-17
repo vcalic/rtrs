@@ -8,7 +8,6 @@
 
 import Foundation
 
-import Foundation
 struct Article : Codable {
     let webURL : String
     let articleId : String
@@ -58,3 +57,7 @@ struct Article : Codable {
     }
 }
 
+struct ParsedArticle {
+    let html: String
+    let article: Article
+}
