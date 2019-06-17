@@ -20,16 +20,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aso-sV-lg6" userLabel="Master">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="28.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="228.5"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wJt-NJ-LtL">
-                                <rect key="frame" x="0.0" y="0.0" width="37.5" height="28.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" highlightedImage="empty" translatesAutoresizingMaskIntoConstraints="NO" id="wJt-NJ-LtL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="228.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="wJt-NJ-LtL" secondAttribute="height" multiplier="90:68" id="qjv-sa-qxe"/>
+                                    <constraint firstAttribute="width" secondItem="wJt-NJ-LtL" secondAttribute="height" multiplier="90:68" priority="999" id="qjv-sa-qxe"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffW-Bv-F7b">
-                                <rect key="frame" x="8" y="11.5" width="37.5" height="17"/>
+                                <rect key="frame" x="8" y="211.5" width="320" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -62,4 +62,7 @@
             <point key="canvasLocation" x="76.811594202898561" y="96.763392857142847"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="empty" width="89" height="67.5"/>
+    </resources>
 </document>
