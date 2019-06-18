@@ -125,9 +125,9 @@ private extension Article {
             "time": "",
             "source_label": alphabet.source,
             "source": agency ?? "",
-            "title": title,
-            "lead": introText,
-            "body": text,
+            "title": title.decodeHTMLEntities,
+            "lead": introText.decodeHTMLEntities,
+            "body": text.decodeHTMLEntities,
             "video_url": videoUrl ?? "",
             "video_info": videoName ?? "",
             "poster_url": largeImageUrl ?? ""

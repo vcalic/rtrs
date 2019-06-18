@@ -22,7 +22,7 @@ final class HomeViewController: UIViewController, StoryboardLoadable {
         setup()
         title = ""
         loadData()
-        
+
         let leftButton = UIBarButtonItem(barButtonSystemItem: .action,
                                          target: self,
                                          action: #selector(openMenu))
@@ -76,7 +76,7 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.didSelect(article: dataSource[indexPath.row], in: self)
+        delegate?.didSelect(articles:dataSource, selected: indexPath.row, in: self)
     }
 }
 
@@ -90,6 +90,6 @@ extension HomeViewController {
 
 }
 protocol HomeViewControllerDelegate: class {
-    func didSelect(article: ArticleInfo, in: HomeViewController)
+    func didSelect(articles: [ArticleInfo], selected: Int, in: HomeViewController)
     func toggleMenu(in homeViewController: HomeViewController)
 }

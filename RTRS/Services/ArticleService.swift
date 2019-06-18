@@ -33,6 +33,7 @@ struct ArticleService {
         handlebars = try Handlebars()
     }
 
+    //TODO: fix this error catching in accordance to Google's Swift style (ie catch Document.ReadError.permissionDenied)
     func getArticle(id: Int, completion: @escaping(Result<ParsedArticle, AppError>) -> Void) {
         api.fetchArticle(id: id) { (result) in
             var stage: ParsingStage

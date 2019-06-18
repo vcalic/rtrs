@@ -19,10 +19,10 @@ final class ArticleLoader {
         self.articleService = articleService
     }
     func start() {
-        articleService.getArticle(id: id) { [unowned self] (result) in
+        articleService.getArticle(id: id) { [weak self] (result) in
             do {
                 let parsedArticle = try result.get()
-                self.content.update(with: parsedArticle.html)
+                self?.content.update(with: parsedArticle.html)
             } catch (let error) {
                 debugPrint("Got error \(error)")
             }

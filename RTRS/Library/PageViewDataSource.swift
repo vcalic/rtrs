@@ -55,9 +55,9 @@ typealias InstantiateViewControllerBlock = () -> PageViewContent
     func viewControllerAt(index: Int) -> PageViewContent {
         guard let block = instantiateViewControllerBlock else { fatalError("You didn't instantiate the controller!") }
         guard let configure = configurePageBlock else { fatalError("No configurePageBlock!!!") }
+
         let retval = block()
         let view = retval.topView
-        
         if view == nil || data.count == 0 || index > data.count {
             return retval
         }
@@ -65,11 +65,11 @@ typealias InstantiateViewControllerBlock = () -> PageViewContent
         retval.index = index
         let content = data[index]
         configure(retval, content, index)
-
         return retval
     }
     
     func goto(page: Int) {
+        debugPrint("Goto called")
         guard let startingViewController = viewControllerAt(index: page) as? UIViewController else { fatalError("NoStartingViewController") }
         
         pageViewController.setViewControllers([startingViewController],
@@ -84,9 +84,9 @@ typealias InstantiateViewControllerBlock = () -> PageViewContent
         pageViewController.delegate = self
         
         //TODO: Fixthis
-        let startingViewController = UIViewController()
+        let startingViewController = viewControllerAt(index: 0) as! UIViewController
         let viewControllers = [startingViewController]
-        
+
         pageViewController.setViewControllers(viewControllers,
                                               direction: UIPageViewController.NavigationDirection.forward,
                                               animated: true,
@@ -110,7 +110,7 @@ extension PageViewDataSource: UIPageViewControllerDelegate, UIPageViewController
         }
         localIndex = localIndex - 1
         indexBefore = localIndex
-        
+
         return viewControllerAt(index: localIndex) as? UIViewController
     }
     
@@ -126,7 +126,7 @@ extension PageViewDataSource: UIPageViewControllerDelegate, UIPageViewController
         if localIndex == data.count {
             return nil
         }
-        
+
         return viewControllerAt(index: localIndex) as? UIViewController
     }
     
@@ -135,7 +135,6 @@ extension PageViewDataSource: UIPageViewControllerDelegate, UIPageViewController
                             previousViewControllers: [UIViewController],
                             transitionCompleted completed: Bool) {
         guard let current = pageViewController.viewControllers?[0] as? PageViewContent else { fatalError("Unknown error") }
-        
         if completed {
             currentIndex = current.index
         }

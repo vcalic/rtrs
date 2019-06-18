@@ -36,18 +36,34 @@ class ArticleSwipeViewController: UIViewController {
         var configureBlock: ConfigurePageBlock = { [weak self] (cell, object, index) in
             guard let articleVC = cell as? ArticleViewController else { debugPrint("Not a AVC"); return }
             guard let articleInfo = object as? ArticleInfo else { debugPrint("Not an articleInfo"); return }
-            
+            sself.delegate?.configure(articleViewController: articleVC, info: articleInfo, index: index)
         }
-        dataSource.setupPageViewController(pageViewController,
-                                           in: containerView,
-                                           for: sself,
-                                           configureWith:configureBlock)
+        dataSource.setupPageViewController(
+            pageViewController,
+            in: containerView,
+            for: sself,
+            configureWith:configureBlock)
         { ()-> PageViewContent in
-            return (sself.delegate?.makeArticleViewController())!
+            if let retval = sself.delegate?.makeArticleViewController() {
+                retval.topView = retval.view
+                return retval
+            } else {
+                fatalError("You need to configure this!!!")                
+            }
         }
         return dataSource
     }()
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        _ = dataSource
+        dataSource.goto(page: indexPath.row)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
 }
 
 protocol ArticleSwipeViewControllerDelegate: class {

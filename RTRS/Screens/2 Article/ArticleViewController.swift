@@ -18,13 +18,13 @@ final class ArticleViewController: UIViewController, StoryboardLoadable, PageVie
     var topView: UIView?
     var index: Int = 0
     
-    private var articleLoader: ArticleLoader!
+    var articleLoader: ArticleLoader!
     private var html: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         topView = view
-        setup()
+        // setup()
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,7 +39,7 @@ extension ArticleViewController {
         articleLoader.content.addObserver(self) { (vc, html) in
             vc.articleView.html = html
         }
-        delegate?.didLoad(self)
+        delegate?.didLoad(self, articleLoader: articleLoader)
     }
 }
 
@@ -47,6 +47,11 @@ extension ArticleViewController {
     class func make(with articleLoader: ArticleLoader, delegate:ArticleViewControllerDelegate) -> ArticleViewController {
         let vc = ArticleViewController.instantiate()
         vc.articleLoader = articleLoader
+        vc.delegate = delegate
+        return vc
+    }
+        class func make(withDelegate delegate:ArticleViewControllerDelegate) -> ArticleViewController {
+        let vc = ArticleViewController.instantiate()
         vc.delegate = delegate
         return vc
     }
@@ -64,6 +69,6 @@ extension ArticleViewController: ArticleViewDelegate {
 }
 
 protocol ArticleViewControllerDelegate: class {
-    func didLoad(_ articleViewController: ArticleViewController)
+    func didLoad(_ articleViewController: ArticleViewController, articleLoader: ArticleLoader)
     func shouldAllow(url: URL) -> Bool
 }

@@ -76,45 +76,61 @@ extension AppCoordinator: HomeViewControllerDelegate {
     func toggleMenu(in homeViewController: HomeViewController) {
         menuService.toggleMenu(in: navigationController)
     }
-    
-    func didSelect(article: ArticleInfo, in: HomeViewController) {
+
+    func didSelect(articles: [ArticleInfo], selected: Int, in: HomeViewController) {
         if inTransition == true {
             return
         }
         inTransition = true
-        let id = Int(article.id)!
-        articleLoader = try! ArticleLoader(articleService: articleService, articleId: id)
-        let vc = ArticleViewController.make(with: articleLoader, delegate: self)
-        navigationController.show(vc, sender: self)
+        //articleOpen(article: articles[selected])
+        let articlePages =  ArticleSwipeViewController()
+        articlePages.articles = articles
+        articlePages.indexPath = IndexPath(row: selected, section: 0)
+        articlePages.delegate = self
+        navigationController.show(articlePages, sender: self)
         inTransition = false
     }
-    
+
     func openArticle(id: Int) {
         do {
-            articleLoader = try ArticleLoader(articleService: articleService, articleId: id)
+            let articleLoader = try ArticleLoader(articleService: articleService, articleId: id)
             let vc = ArticleViewController.make(with: articleLoader, delegate: self)
-            navigationController.show(vc, sender: self)
+            navigationController.present(vc, animated: true)
         } catch (let error) {
             debugPrint("Could not openArticle: \(error)")
         }
     }
 
+    private func articleOpen(article: ArticleInfo) {
+        let id = Int(article.id)!
+        articleLoader = try! ArticleLoader(articleService: articleService, articleId: id)
+        let vc = ArticleViewController.make(with: articleLoader, delegate: self)
+        vc.setup()
+        navigationController.show(vc, sender: self)
+    }
     
 }
 
 extension AppCoordinator: ArticleSwipeViewControllerDelegate {
     func configure(articleViewController: ArticleViewController, info: ArticleInfo, index: Int) {
-        
+        if let id = Int(info.id),
+           let articleLoader = try? ArticleLoader(articleService: articleService, articleId: id) {
+            articleViewController.articleLoader = articleLoader
+            articleViewController.setup()
+        } else {
+            fatalError("Die in configure")
+        }
     }
     
     func makeArticleViewController() -> ArticleViewController {
-        let vc = ArticleViewController.make(with: articleLoader, delegate: self)
+        let vc = ArticleViewController.make(withDelegate: self)
         return vc
     }
 }
 
 extension AppCoordinator: ArticleViewControllerDelegate {
-    func didLoad(_ articleViewController: ArticleViewController) {
+    func didLoad(_ articleViewController: ArticleViewController, articleLoader: ArticleLoader) {
+        debugPrint("Did load")
         articleLoader.start()
     }
     
