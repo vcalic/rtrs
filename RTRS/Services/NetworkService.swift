@@ -29,7 +29,6 @@ struct NetworkService {
             completion(.failure(AppError(code: errorCode)))
         }
         task.resume()
-        
     }
     
     func getText(url: URL, completion:@escaping (String, Error?) -> Void) {

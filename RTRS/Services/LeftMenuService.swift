@@ -16,20 +16,21 @@ final class LeftMenuService: Appliable {
     private var holdingViewController: UIViewController?
 
     func addPanGesture(toView view : UIView) {
-        self.sideMenuManager.menuAddPanGestureToPresent(toView: view)
+        self.sideMenuManager.addPanGestureToPresent(toView: view)
     }
     
-    func addLeftController(_ vc:UISideMenuNavigationController) {
-        self.sideMenuManager.menuLeftNavigationController = vc
+    func addLeftController(_ vc:SideMenuNavigationController) {
+        self.sideMenuManager.leftMenuNavigationController = vc
     }
     
     func create(with rootViewController: UIViewController) {
-        let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: rootViewController)
+        let menuLeftNavigationController = SideMenuNavigationController(rootViewController: rootViewController)
         menuLeftNavigationController.sideMenuDelegate = self
         sideMenuManager.apply() {
-            $0.menuLeftNavigationController = menuLeftNavigationController
-            $0.menuFadeStatusBar = false
-            $0.menuPresentMode = .menuSlideIn
+            $0.leftMenuNavigationController = menuLeftNavigationController
+            
+            // $0.menuFadeStatusBar = false
+            // $0.menuPresentMode = .menuSlideIn
         }
     }
     
@@ -54,32 +55,32 @@ final class LeftMenuService: Appliable {
                 debugPrint("Weird error")
             }
         } else {
-            vc.show(sideMenuManager.menuLeftNavigationController!, sender: self)
+            vc.show(sideMenuManager.leftMenuNavigationController!, sender: self)
             holdingViewController = vc
         }
 
     }
 }
 
-extension LeftMenuService: UISideMenuNavigationControllerDelegate {
+extension LeftMenuService: SideMenuNavigationControllerDelegate {
     
-    func sideMenuWillAppear(menu: UISideMenuNavigationController, animated: Bool) {
+    func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
         // print("SideMenu Appearing! (animated: \(animated))")
         isMenuShown = true
         
     }
     
-    func sideMenuDidAppear(menu: UISideMenuNavigationController, animated: Bool) {
+    func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
         // print("SideMenu Appeared! (animated: \(animated))")
     }
     
-    func sideMenuWillDisappear(menu: UISideMenuNavigationController, animated: Bool) {
+    func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
         // print("SideMenu Disappearing! (animated: \(animated))")
         isMenuShown = false
         
     }
     
-    func sideMenuDidDisappear(menu: UISideMenuNavigationController, animated: Bool) {
+    func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
         // print("SideMenu Disappeared! (animated: \(animated))")
         isMenuShown = false
     }
