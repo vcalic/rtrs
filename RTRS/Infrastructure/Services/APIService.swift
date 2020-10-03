@@ -12,7 +12,7 @@ final class APIService {
     
     func article(id: Int, completion: @escaping(Result<Article, AppError>) -> Void) {
         let url = Services.article(id: id).value
-        NetworkService.getData(url: url) { (result) in
+        NetworkService.fetchData(url: url) { (result) in
             guard let result = try? result.get() else { DispatchQueue.main.async {completion(.failure(.emptyData))}; return}
             do {
                 let article = try JSONDecoder().decode(Article.self, from: result)
@@ -26,7 +26,7 @@ final class APIService {
     
     func fetchArticle(id: Int, completion: @escaping(Result<Data, AppError>) -> Void) {
         let url = Services.article(id: id).value
-        NetworkService.getData(url: url) { (result) in
+        NetworkService.fetchData(url: url) { (result) in
             guard let result = try? result.get() else { DispatchQueue.main.async {completion(.failure(.emptyData))}; return}
             completion(.success(result))
         }
@@ -34,7 +34,7 @@ final class APIService {
 
     func homePage(id:Int = -1, count:Int=30, completion: @escaping(Result<ArticleList, Error>) -> Void) {
         let url = Services.categoryArticles(id: id, count: count).value
-        NetworkService.getData(url: url) { (result) in
+        NetworkService.fetchData(url: url) { (result) in
             var retval: Result<ArticleList, Error>
             do {
                 let list = try result.decoded() as ArticleList
@@ -66,7 +66,7 @@ final class APIService {
     func categories(completion:@escaping((Result<[Category], AppError>) -> Void)) {
         let url = Services.categoriesUrl.value
         debugPrint("URL: \(url)")
-        NetworkService.getData(url: url) { (result) in
+        NetworkService.fetchData(url: url) { (result) in
             var retval: Result<[Category], AppError>
             do {
                 let list = try result.decoded() as [Category]

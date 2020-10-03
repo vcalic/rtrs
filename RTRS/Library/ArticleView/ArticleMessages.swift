@@ -38,7 +38,7 @@ extension ArticleMessage {
 
             if self == .getURL {
                 print("Getting data from ArticleMessage")
-                NetworkService.getData(url: url) { (result) in
+                NetworkService.fetchData(url: url) { (result) in
                     DispatchQueue.main.async {
                         completion(self.process(result: result, promiseId: promiseId))
                     }
@@ -55,7 +55,7 @@ extension ArticleMessage {
         }
     }
     
-    private func process(result: Result<Data, AppError>, promiseId: String) -> String {
+    private func process(result: Result<Data, APIError>, promiseId: String) -> String {
         print("Result \(result)")
         switch result {
         case .success(let result):
