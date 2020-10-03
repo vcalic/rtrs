@@ -77,6 +77,10 @@
 		54C156D32263EE30000AE979 /* LeftMenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C156D22263EE30000AE979 /* LeftMenuService.swift */; };
 		54C9A50E252850AD007172FD /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 54C9A50D252850AD007172FD /* SideMenu */; };
 		54C9A5142528511D007172FD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 54C9A5132528511D007172FD /* Kingfisher */; };
+		54C9A51B25285288007172FD /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 54C9A51A25285288007172FD /* CocoaLumberjackSwift */; };
+		54C9A51D25285288007172FD /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = 54C9A51C25285288007172FD /* CocoaLumberjack */; };
+		54C9A522252852D7007172FD /* CocoaLumberjackIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C9A521252852D7007172FD /* CocoaLumberjackIntegration.swift */; };
+		54C9A525252852E0007172FD /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C9A524252852E0007172FD /* Logging.swift */; };
 		54CF2ACF226DF6A100EB6581 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CF2ACE226DF6A100EB6581 /* MainCoordinator.swift */; };
 		54E72FD42264738900A05EAF /* RouterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E72FD32264738900A05EAF /* RouterService.swift */; };
 		54E72FD62264740000A05EAF /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E72FD52264740000A05EAF /* MenuCoordinator.swift */; };
@@ -160,6 +164,8 @@
 		54C156CE2263CF2A000AE979 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		54C156CF2263CF2B000AE979 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		54C156D22263EE30000AE979 /* LeftMenuService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuService.swift; sourceTree = "<group>"; };
+		54C9A521252852D7007172FD /* CocoaLumberjackIntegration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaLumberjackIntegration.swift; sourceTree = "<group>"; };
+		54C9A524252852E0007172FD /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		54CF2ACE226DF6A100EB6581 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		54E72FD32264738900A05EAF /* RouterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterService.swift; sourceTree = "<group>"; };
 		54E72FD52264740000A05EAF /* MenuCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
@@ -179,6 +185,8 @@
 			files = (
 				54C9A5142528511D007172FD /* Kingfisher in Frameworks */,
 				54C9A50E252850AD007172FD /* SideMenu in Frameworks */,
+				54C9A51B25285288007172FD /* CocoaLumberjackSwift in Frameworks */,
+				54C9A51D25285288007172FD /* CocoaLumberjack in Frameworks */,
 				5423DAB6224EE8C30061F20B /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,7 +318,8 @@
 				54600CAB2240C42A009F866F /* Screens */,
 				545E7AF622B58F3700D1C3AC /* Views */,
 				54600CAF2240C4AC009F866F /* App Support */,
-				54600CAD2240C446009F866F /* Services */,
+				54C9A51F252852A4007172FD /* Integration */,
+				54C9A520252852BB007172FD /* Infrastructure */,
 				547D5F17224AE4CB004D96C5 /* Models */,
 				54600CAC2240C43B009F866F /* Resources */,
 				54600CAE2240C44F009F866F /* Library */,
@@ -346,7 +355,6 @@
 				54E8ACF32240CBE900CEA529 /* PushService.swift */,
 				54E8C86D22416B5300EB7170 /* APIService.swift */,
 				543C8226224BA8CB00CF4184 /* NetworkService.swift */,
-				54C156D22263EE30000AE979 /* LeftMenuService.swift */,
 				54AEA9D022B81DC700F187AB /* ArticleService.swift */,
 			);
 			path = Services;
@@ -439,6 +447,24 @@
 			path = "0 Menu";
 			sourceTree = "<group>";
 		};
+		54C9A51F252852A4007172FD /* Integration */ = {
+			isa = PBXGroup;
+			children = (
+				54C9A521252852D7007172FD /* CocoaLumberjackIntegration.swift */,
+			);
+			path = Integration;
+			sourceTree = "<group>";
+		};
+		54C9A520252852BB007172FD /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				54600CAD2240C446009F866F /* Services */,
+				54C156D22263EE30000AE979 /* LeftMenuService.swift */,
+				54C9A524252852E0007172FD /* Logging.swift */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
 		54CB072A2261F81A005B49EC /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -468,6 +494,8 @@
 			packageProductDependencies = (
 				54C9A50D252850AD007172FD /* SideMenu */,
 				54C9A5132528511D007172FD /* Kingfisher */,
+				54C9A51A25285288007172FD /* CocoaLumberjackSwift */,
+				54C9A51C25285288007172FD /* CocoaLumberjack */,
 			);
 			productName = RTRS;
 			productReference = 54600C942240C3AE009F866F /* RTRS.app */;
@@ -501,6 +529,7 @@
 			packageReferences = (
 				54C9A50C252850AD007172FD /* XCRemoteSwiftPackageReference "SideMenu" */,
 				54C9A5122528511D007172FD /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				54C9A51925285288007172FD /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
 			);
 			productRefGroup = 54600C952240C3AE009F866F /* Products */;
 			projectDirPath = "";
@@ -597,6 +626,7 @@
 				54BDE9C522B6CCAC0005FB9B /* Theme.swift in Sources */,
 				5488FAB022629B78005FDDBD /* Alert.swift in Sources */,
 				54600CB32240C4FB009F866F /* AppError.swift in Sources */,
+				54C9A522252852D7007172FD /* CocoaLumberjackIntegration.swift in Sources */,
 				543B27B12256C87E00AE9C59 /* ArticleViewDelegate.swift in Sources */,
 				54AEA9CF22B80BFD00F187AB /* ArticleSwipeViewController.swift in Sources */,
 				54600CB42240C4FB009F866F /* AppProtocols.swift in Sources */,
@@ -611,6 +641,7 @@
 				5488FAB422629E54005FDDBD /* ScopeFunction.swift in Sources */,
 				54AEA9C822B7E4B300F187AB /* PageViewDataSource.swift in Sources */,
 				5488FAB222629D1C005FDDBD /* TargetedExtension.swift in Sources */,
+				54C9A525252852E0007172FD /* Logging.swift in Sources */,
 				5488FAAC22623E48005FDDBD /* AppExtensions.swift in Sources */,
 				54600CC02240C539009F866F /* Defaults.swift in Sources */,
 				54E8C87222416B9500EB7170 /* Models.swift in Sources */,
@@ -856,6 +887,14 @@
 				minimumVersion = 5.15.5;
 			};
 		};
+		54C9A51925285288007172FD /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CocoaLumberjack/CocoaLumberjack.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.7.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -868,6 +907,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 54C9A5122528511D007172FD /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		54C9A51A25285288007172FD /* CocoaLumberjackSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54C9A51925285288007172FD /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjackSwift;
+		};
+		54C9A51C25285288007172FD /* CocoaLumberjack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54C9A51925285288007172FD /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjack;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
