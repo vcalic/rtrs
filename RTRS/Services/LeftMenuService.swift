@@ -28,9 +28,8 @@ final class LeftMenuService: Appliable {
         menuLeftNavigationController.sideMenuDelegate = self
         sideMenuManager.apply() {
             $0.leftMenuNavigationController = menuLeftNavigationController
-            
-            // $0.menuFadeStatusBar = false
-            // $0.menuPresentMode = .menuSlideIn
+            $0.menuFadeStatusBar = false
+            $0.menuPresentMode = .menuSlideIn
         }
     }
     

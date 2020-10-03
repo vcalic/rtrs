@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -62,10 +62,6 @@
 		54AEA9CF22B80BFD00F187AB /* ArticleSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AEA9CE22B80BFD00F187AB /* ArticleSwipeViewController.swift */; };
 		54AEA9D122B81DC700F187AB /* ArticleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AEA9D022B81DC700F187AB /* ArticleService.swift */; };
 		54AEA9D322B842E500F187AB /* ArticleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AEA9D222B842E500F187AB /* ArticleCoordinator.swift */; };
-		54BD98D62405A5A9000F0546 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BD98D22405A5A7000F0546 /* Kingfisher.framework */; };
-		54BD98D72405A5A9000F0546 /* Kingfisher.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 54BD98D32405A5A8000F0546 /* Kingfisher.framework.dSYM */; };
-		54BD98D82405A5A9000F0546 /* SideMenu.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 54BD98D42405A5A8000F0546 /* SideMenu.framework.dSYM */; };
-		54BD98D92405A5A9000F0546 /* SideMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BD98D52405A5A9000F0546 /* SideMenu.framework */; };
 		54BDE9BE22B6A0610005FB9B /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BDE9BC22B6A0610005FB9B /* StoryCell.swift */; };
 		54BDE9BF22B6A0610005FB9B /* StoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54BDE9BD22B6A0610005FB9B /* StoryCell.xib */; };
 		54BDE9C122B6A0B20005FB9B /* WRCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BDE9C022B6A0B20005FB9B /* WRCell.swift */; };
@@ -79,6 +75,8 @@
 		54C156D02263CF2B000AE979 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C156CE2263CF2A000AE979 /* MenuViewController.swift */; };
 		54C156D12263CF2B000AE979 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C156CF2263CF2B000AE979 /* MenuCell.swift */; };
 		54C156D32263EE30000AE979 /* LeftMenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C156D22263EE30000AE979 /* LeftMenuService.swift */; };
+		54C9A50E252850AD007172FD /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 54C9A50D252850AD007172FD /* SideMenu */; };
+		54C9A5142528511D007172FD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 54C9A5132528511D007172FD /* Kingfisher */; };
 		54CF2ACF226DF6A100EB6581 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CF2ACE226DF6A100EB6581 /* MainCoordinator.swift */; };
 		54E72FD42264738900A05EAF /* RouterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E72FD32264738900A05EAF /* RouterService.swift */; };
 		54E72FD62264740000A05EAF /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E72FD52264740000A05EAF /* MenuCoordinator.swift */; };
@@ -149,10 +147,6 @@
 		54AEA9CE22B80BFD00F187AB /* ArticleSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleSwipeViewController.swift; sourceTree = "<group>"; };
 		54AEA9D022B81DC700F187AB /* ArticleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleService.swift; sourceTree = "<group>"; };
 		54AEA9D222B842E500F187AB /* ArticleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCoordinator.swift; sourceTree = "<group>"; };
-		54BD98D22405A5A7000F0546 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = "<group>"; };
-		54BD98D32405A5A8000F0546 /* Kingfisher.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Kingfisher.framework.dSYM; sourceTree = "<group>"; };
-		54BD98D42405A5A8000F0546 /* SideMenu.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SideMenu.framework.dSYM; sourceTree = "<group>"; };
-		54BD98D52405A5A9000F0546 /* SideMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SideMenu.framework; sourceTree = "<group>"; };
 		54BDE9BC22B6A0610005FB9B /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 		54BDE9BD22B6A0610005FB9B /* StoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryCell.xib; sourceTree = "<group>"; };
 		54BDE9C022B6A0B20005FB9B /* WRCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRCell.swift; sourceTree = "<group>"; };
@@ -183,8 +177,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54BD98D92405A5A9000F0546 /* SideMenu.framework in Frameworks */,
-				54BD98D62405A5A9000F0546 /* Kingfisher.framework in Frameworks */,
+				54C9A5142528511D007172FD /* Kingfisher in Frameworks */,
+				54C9A50E252850AD007172FD /* SideMenu in Frameworks */,
 				5423DAB6224EE8C30061F20B /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,13 +186,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2FC5EFE8CF9CEA18041CC0E5 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		54216D63224FE07D00B05659 /* Mustache */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,10 +210,6 @@
 		5423DAB4224EE8C20061F20B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				54BD98D22405A5A7000F0546 /* Kingfisher.framework */,
-				54BD98D32405A5A8000F0546 /* Kingfisher.framework.dSYM */,
-				54BD98D52405A5A9000F0546 /* SideMenu.framework */,
-				54BD98D42405A5A8000F0546 /* SideMenu.framework.dSYM */,
 				5423DAB5224EE8C30061F20B /* WebKit.framework */,
 			);
 			name = Frameworks;
@@ -307,7 +290,6 @@
 			children = (
 				54600C962240C3AE009F866F /* RTRS */,
 				54600C952240C3AE009F866F /* Products */,
-				2FC5EFE8CF9CEA18041CC0E5 /* Pods */,
 				5423DAB4224EE8C20061F20B /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -483,6 +465,10 @@
 			dependencies = (
 			);
 			name = RTRS;
+			packageProductDependencies = (
+				54C9A50D252850AD007172FD /* SideMenu */,
+				54C9A5132528511D007172FD /* Kingfisher */,
+			);
 			productName = RTRS;
 			productReference = 54600C942240C3AE009F866F /* RTRS.app */;
 			productType = "com.apple.product-type.application";
@@ -494,7 +480,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Byrccom;
 				TargetAttributes = {
 					54600C932240C3AE009F866F = {
@@ -512,6 +498,10 @@
 				Base,
 			);
 			mainGroup = 54600C8B2240C3AE009F866F;
+			packageReferences = (
+				54C9A50C252850AD007172FD /* XCRemoteSwiftPackageReference "SideMenu" */,
+				54C9A5122528511D007172FD /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 54600C952240C3AE009F866F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -534,11 +524,9 @@
 				54216D65224FE09100B05659 /* mustache.js in Resources */,
 				542DC2F522556A7D00665DBF /* page.html in Resources */,
 				54600CA22240C3AF009F866F /* LaunchScreen.storyboard in Resources */,
-				54BD98D72405A5A9000F0546 /* Kingfisher.framework.dSYM in Resources */,
 				542DC2F32255599000665DBF /* template.html in Resources */,
 				542DC2FE225687B700665DBF /* timeSource.html in Resources */,
 				54BDE9BF22B6A0610005FB9B /* StoryCell.xib in Resources */,
-				54BD98D82405A5A9000F0546 /* SideMenu.framework.dSYM in Resources */,
 				545E7AFB22B58F6200D1C3AC /* BigCell.xib in Resources */,
 				54600C9F2240C3AF009F866F /* Assets.xcassets in Resources */,
 				542DC2F922556A9200665DBF /* main.css in Resources */,
@@ -690,6 +678,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -751,6 +740,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -791,7 +781,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = RTRS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -814,7 +804,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = RTRS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -848,6 +838,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		54C9A50C252850AD007172FD /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.4.9;
+			};
+		};
+		54C9A5122528511D007172FD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.15.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		54C9A50D252850AD007172FD /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54C9A50C252850AD007172FD /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
+		};
+		54C9A5132528511D007172FD /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54C9A5122528511D007172FD /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 54600C8C2240C3AE009F866F /* Project object */;
 }
