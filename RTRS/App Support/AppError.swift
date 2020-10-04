@@ -10,7 +10,8 @@ import Foundation
 
 public enum AppError: Swift.Error {
     case generalError
-    case httpError(code: Int)
+    case networkError
+    case httpError(code: Int, message: String)
     case invalidURL
     case requestFailed
     case emptyData
@@ -29,8 +30,17 @@ public enum AppError: Swift.Error {
         }
     }
     
-    init(code: Int) {
-        self = .httpError(code: code)
+  init(networkError apierror: NetworkError) {
+    switch apierror {
+    case .invalidResponse:
+      self = .networkError
+    case .networkError(_):
+      self = .networkError
+    case .serverError:
+      self = .networkError
+    case .requestError(let code, let message):
+      self = .httpError(code: code, message: message)
     }
+  }
 }
 

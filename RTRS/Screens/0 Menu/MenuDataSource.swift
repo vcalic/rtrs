@@ -103,8 +103,6 @@ extension AppSections {
             }
     }
     }
-    
-    
 }
 
 struct SectionMenu {

@@ -1,24 +1,73 @@
 //
 //  NetworkService.swift
-//  RTRS
+//  Byrccom
 //
 //  Created by Vlada Calic on 3/27/19.
 //  Copyright © 2019 Byrccom. All rights reserved.
 //
 
-typealias APIResult = Result<Data, APIError>
+import Foundation
 
-enum APIError: Error {
+typealias NetworkResult = Result<Data, NetworkError>
+
+enum NetworkError: Error {
   case networkError(Error)
   case serverError // HTTP 5xx
   case requestError(Int, String) // HTTP 4xx
   case invalidResponse
 }
 
-import Foundation
+private func handle(data: Data?,
+                    urlResponse: URLResponse?,
+                    error: Error?,
+                    completion: @escaping (NetworkResult) -> Void)
+{
+  if let error = error {
+    DispatchQueue.main.async {
+      completion(.failure(.networkError(error)))
+    }
+    return
+  }
+  guard let response = urlResponse as? HTTPURLResponse, let data = data else {
+    DispatchQueue.main.async {
+      completion(.failure(.invalidResponse))
+    }
+    return
+  }
+
+  switch response.statusCode {
+  case 200 ... 299:
+    DispatchQueue.main.async {
+      completion(.success(data))
+    }
+
+  case 400 ... 499:
+    let body = String(data: data, encoding: .utf8) ?? "no data"
+    DispatchQueue.main.async {
+      completion(.failure(.requestError(response.statusCode, body)))
+    }
+  case 500 ... 599:
+    DispatchQueue.main.async {
+      completion(.failure(.serverError))
+    }
+
+  default:
+    fatalError("Unhandled HTTP status code")
+  }
+}
+
 struct NetworkService {
-  static func fetchData(url: URL, completion: @escaping (APIResult) -> Void) {
-    let task = URLSession.shared.dataTask(with: url) { data, urlResponse, error in
+  static func fetchData(url: URL, completion: @escaping (NetworkResult) -> Void) {
+    NetworkService.perform(request: URLRequest(url: url), completion: completion)
+  }
+
+  static func postData(url: URL, data: [String: String], completion: @escaping (NetworkResult) -> Void) {
+    let request = URLRequest.postWith(url: url, data: data)
+    perform(request: request, completion: completion)
+  }
+
+  private static func perform(request: URLRequest, completion: @escaping (NetworkResult) -> Void) {
+    let task = URLSession.shared.dataTask(with: request) { data, urlResponse, error in
       if let error = error {
         DispatchQueue.main.async {
           completion(.failure(.networkError(error)))
@@ -55,10 +104,12 @@ struct NetworkService {
     task.resume()
   }
 
-  static func postData(url: URL, query: String, completion: @escaping (APIResult) -> Void) {
+  static func postData(url: URL, query: String, completion: @escaping (NetworkResult) -> Void) {
     fatalError("Not implemented")
   }
 }
+
+extension URLRequest: Appliable {}
 
 enum HTTPMethod: String {
   case get = "GET"
@@ -93,7 +144,10 @@ struct APIClient {
   typealias APIClientCompletion = (HTTPURLResponse?, Data?, AppError?) -> Void
 
   private let session = URLSession.shared
-  private let baseURL = URL(string: "https://jsonplaceholder.typicode.com")!
+  private let baseURL: URL //  = URL(string: "https://jsonplaceholder.typicode.com")!
+  init(baseURL: URL) {
+    self.baseURL = baseURL
+  }
 
   func request(_ request: APIRequest, _ completion: @escaping APIClientCompletion) {
     var urlComponents = URLComponents()

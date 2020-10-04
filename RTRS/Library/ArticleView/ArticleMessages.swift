@@ -55,7 +55,7 @@ extension ArticleMessage {
         }
     }
     
-    private func process(result: Result<Data, APIError>, promiseId: String) -> String {
+    private func process(result: Result<Data, NetworkError>, promiseId: String) -> String {
         print("Result \(result)")
         switch result {
         case .success(let result):

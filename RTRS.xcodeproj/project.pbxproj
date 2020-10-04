@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		540359872253CC59000A0202 /* handlebars.js in Resources */ = {isa = PBXBuildFile; fileRef = 540359862253CC59000A0202 /* handlebars.js */; };
 		540359892253CC66000A0202 /* Handlebars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540359882253CC66000A0202 /* Handlebars.swift */; };
+		5411DF45252A2A1400030A4A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411DF44252A2A1400030A4A /* Utils.swift */; };
+		5411DF59252A524000030A4A /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411DF58252A524000030A4A /* Strings.swift */; };
+		5411DF5C252A64D400030A4A /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411DF5B252A64D400030A4A /* Icons.swift */; };
 		54216D65224FE09100B05659 /* mustache.js in Resources */ = {isa = PBXBuildFile; fileRef = 54216D64224FE09100B05659 /* mustache.js */; };
 		54216D67224FE0B000B05659 /* Mustache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54216D66224FE0B000B05659 /* Mustache.swift */; };
 		5423DAAE224EE2920061F20B /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5423DAAD224EE2920061F20B /* Article.swift */; };
@@ -96,6 +99,9 @@
 /* Begin PBXFileReference section */
 		540359862253CC59000A0202 /* handlebars.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = handlebars.js; sourceTree = "<group>"; };
 		540359882253CC66000A0202 /* Handlebars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handlebars.swift; sourceTree = "<group>"; };
+		5411DF44252A2A1400030A4A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		5411DF58252A524000030A4A /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		5411DF5B252A64D400030A4A /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		54216D64224FE09100B05659 /* mustache.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mustache.js; sourceTree = "<group>"; };
 		54216D66224FE0B000B05659 /* Mustache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mustache.swift; sourceTree = "<group>"; };
 		5423DAAD224EE2920061F20B /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
@@ -344,6 +350,7 @@
 				542DC2F12255596500665DBF /* HTML */,
 				54600CA02240C3AF009F866F /* LaunchScreen.storyboard */,
 				54600C9E2240C3AF009F866F /* Assets.xcassets */,
+				5411DF5B252A64D400030A4A /* Icons.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -354,7 +361,6 @@
 				54E72FD32264738900A05EAF /* RouterService.swift */,
 				54E8ACF32240CBE900CEA529 /* PushService.swift */,
 				54E8C86D22416B5300EB7170 /* APIService.swift */,
-				543C8226224BA8CB00CF4184 /* NetworkService.swift */,
 				54AEA9D022B81DC700F187AB /* ArticleService.swift */,
 			);
 			path = Services;
@@ -382,6 +388,7 @@
 				54BDE9C822B6E3180005FB9B /* VerticalTopAlignLabel.swift */,
 				54AEA9C722B7E4B300F187AB /* PageViewDataSource.swift */,
 				54AEA9C922B7FD4700F187AB /* String+DecodeEntitites.swift */,
+				5411DF44252A2A1400030A4A /* Utils.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -396,6 +403,7 @@
 				54600C972240C3AE009F866F /* AppDelegate.swift */,
 				5488FAAB22623E48005FDDBD /* AppExtensions.swift */,
 				54BDE9C422B6CCAC0005FB9B /* Theme.swift */,
+				5411DF58252A524000030A4A /* Strings.swift */,
 			);
 			path = "App Support";
 			sourceTree = "<group>";
@@ -450,6 +458,8 @@
 		54C9A51F252852A4007172FD /* Integration */ = {
 			isa = PBXGroup;
 			children = (
+				543C8226224BA8CB00CF4184 /* NetworkService.swift */,
+				54C156D22263EE30000AE979 /* LeftMenuService.swift */,
 				54C9A521252852D7007172FD /* CocoaLumberjackIntegration.swift */,
 			);
 			path = Integration;
@@ -459,7 +469,6 @@
 			isa = PBXGroup;
 			children = (
 				54600CAD2240C446009F866F /* Services */,
-				54C156D22263EE30000AE979 /* LeftMenuService.swift */,
 				54C9A524252852E0007172FD /* Logging.swift */,
 			);
 			path = Infrastructure;
@@ -622,6 +631,7 @@
 				54C156D12263CF2B000AE979 /* MenuCell.swift in Sources */,
 				54AEA9D122B81DC700F187AB /* ArticleService.swift in Sources */,
 				54E72FD62264740000A05EAF /* MenuCoordinator.swift in Sources */,
+				5411DF59252A524000030A4A /* Strings.swift in Sources */,
 				54C156D32263EE30000AE979 /* LeftMenuService.swift in Sources */,
 				54BDE9C522B6CCAC0005FB9B /* Theme.swift in Sources */,
 				5488FAB022629B78005FDDBD /* Alert.swift in Sources */,
@@ -630,6 +640,7 @@
 				543B27B12256C87E00AE9C59 /* ArticleViewDelegate.swift in Sources */,
 				54AEA9CF22B80BFD00F187AB /* ArticleSwipeViewController.swift in Sources */,
 				54600CB42240C4FB009F866F /* AppProtocols.swift in Sources */,
+				5411DF45252A2A1400030A4A /* Utils.swift in Sources */,
 				54E8C87122416B9500EB7170 /* URL.swift in Sources */,
 				5488FAAA2262327D005FDDBD /* Coordinator.swift in Sources */,
 				54600CBC2240C533009F866F /* ActivityIndicator.swift in Sources */,
@@ -637,6 +648,7 @@
 				54E8ACF22240CB9A00CEA529 /* RxExtensions.swift in Sources */,
 				54BDE9C922B6E3180005FB9B /* VerticalTopAlignLabel.swift in Sources */,
 				54AEA9D322B842E500F187AB /* ArticleCoordinator.swift in Sources */,
+				5411DF5C252A64D400030A4A /* Icons.swift in Sources */,
 				54E8C86E22416B5300EB7170 /* APIService.swift in Sources */,
 				5488FAB422629E54005FDDBD /* ScopeFunction.swift in Sources */,
 				54AEA9C822B7E4B300F187AB /* PageViewDataSource.swift in Sources */,

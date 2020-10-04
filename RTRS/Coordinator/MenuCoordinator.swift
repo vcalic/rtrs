@@ -39,7 +39,7 @@ final class MenuCoordinator: Coordinator {
 
 extension MenuCoordinator: MenuViewControllerDelegate {
     func didSelectSection(section: AppSections, vc: MenuViewController) {
-        //debugPrint("Choose section \(section)")
+        debugPrint("Choose section \(section)")
         menuService.closedMenu()
     }
     

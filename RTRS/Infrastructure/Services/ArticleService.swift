@@ -9,47 +9,49 @@
 import Foundation
 
 private enum ParsingStage {
-    case unwrap
-    case decode
-    case handlebars
-    
-    var error: AppError {
-        switch self {
-        case .unwrap:
-            return .emptyData
-        case .decode:
-            return .decodingError
-        case .handlebars:
-            return .handlebarError
-        }
-    }
-}
-struct ArticleService {
-    private var api: APIService
-    private let handlebars: Handlebars
-    
-    init(apiService: APIService) throws {
-        api = apiService
-        handlebars = try Handlebars()
-    }
+  case unwrap
+  case decode
+  case handlebars
 
-    //TODO: fix this error catching in accordance to Google's Swift style (ie catch Document.ReadError.permissionDenied)
-    func getArticle(id: Int, completion: @escaping(Result<ParsedArticle, AppError>) -> Void) {
-        api.fetchArticle(id: id) { (result) in
-            var stage: ParsingStage
-            do {
-                stage = .unwrap
-                let data = try result.get()
-                stage = .decode
-                let article = try JSONDecoder().decode(Article.self, from: data)
-                stage = .handlebars
-                let html = try self.handlebars.perform(article: article)
-                let parsedArticle = ParsedArticle(html: html, article: article)
-                DispatchQueue.main.async { completion(.success(parsedArticle)) }
-            } catch (let error) {
-                debugPrint("On stage \(stage) we got local error \(error)")
-                DispatchQueue.main.async { completion(.failure(stage.error)) }
-            }
-        }
+  var error: AppError {
+    switch self {
+    case .unwrap:
+      return .emptyData
+    case .decode:
+      return .decodingError
+    case .handlebars:
+      return .handlebarError
     }
+  }
 }
+
+struct ArticleService {
+  private var api: APIService
+  private let handlebars: Handlebars
+
+  init(apiService: APIService) throws {
+    api = apiService
+    handlebars = try Handlebars()
+  }
+
+  // TODO: fix this error catching in accordance to Google's Swift style (ie catch Document.ReadError.permissionDenied)
+  func getArticle(id: Int, completion: @escaping (Result<ParsedArticle, AppError>) -> Void) {
+    api.fetchArticle(id: id) { result in
+      var stage: ParsingStage
+      do {
+        stage = .unwrap
+        let data = try result.get()
+        stage = .decode
+        let article = try JSONDecoder().decode(Article.self, from: data)
+        stage = .handlebars
+        let html = try self.handlebars.perform(article: article)
+        let parsedArticle = ParsedArticle(html: html, article: article)
+        Async.call(input: .success(parsedArticle), completion: completion)
+      } catch {
+        debugPrint("On stage \(stage) we got local error \(error)")
+        Async.call(input: .failure(stage.error), completion: completion)
+      }
+    }
+  }
+}
+
