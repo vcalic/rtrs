@@ -281,6 +281,7 @@
 		545E7AF622B58F3700D1C3AC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				54EFC813252B38C200D4C5AC /* Views */,
 				54AEA9CB22B80BCF00F187AB /* ViewControllers */,
 				545E7AF722B58F4000D1C3AC /* Cells */,
 			);
@@ -481,6 +482,13 @@
 				54E72FD72264743700A05EAF /* Menu.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		54EFC813252B38C200D4C5AC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
