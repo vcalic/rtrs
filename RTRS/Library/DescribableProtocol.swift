@@ -75,8 +75,8 @@ extension JSONSerializable {
 
 public protocol Describable: CustomStringConvertible {}
 
-extension Describable {
-  public var description: String {
+public extension Describable {
+  var description: String {
     let mirror = Mirror(reflecting: self)
 
     var str = "\(mirror.subjectType)(\n"

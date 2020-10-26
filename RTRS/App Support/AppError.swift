@@ -9,32 +9,31 @@
 import Foundation
 
 public enum AppError: Swift.Error {
-    case generalError
-    case networkError
-    case httpError(code: Int, message: String)
-    case invalidURL
-    case requestFailed
-    case emptyData
-    case decodingError
-    case missingMustache
-    case missingMain
-    case missingTemplate
-    case handlebarError
+  case generalError
+  case networkError
+  case httpError(code: Int, message: String)
+  case invalidURL
+  case requestFailed
+  case emptyData
+  case decodingError
+  case missingMustache
+  case missingMain
+  case missingTemplate
+  case handlebarError
 
-    
-    init(error: Error) {
-        if error is AppError {
-            self = error as! AppError
-        } else {
-            self = .generalError
-        }
+  init(error: Error) {
+    if error is AppError {
+      self = error as! AppError
+    } else {
+      self = .generalError
     }
-    
+  }
+
   init(networkError apierror: NetworkError) {
     switch apierror {
     case .invalidResponse:
       self = .networkError
-    case .networkError(_):
+    case .networkError:
       self = .networkError
     case .serverError:
       self = .networkError
@@ -43,4 +42,3 @@ public enum AppError: Swift.Error {
     }
   }
 }
-

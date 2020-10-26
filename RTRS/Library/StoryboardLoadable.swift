@@ -14,22 +14,22 @@ public protocol StoryboardLoadable {
   static var storyboardIdentifier: String { get }
 }
 
-extension StoryboardLoadable where Self: UIViewController {
-  public static var storyboardName: String {
+public extension StoryboardLoadable where Self: UIViewController {
+  static var storyboardName: String {
     return String(describing: self)
   }
 
-  public static var storyboardIdentifier: String {
+  static var storyboardIdentifier: String {
     return String(describing: self)
   }
 
-  public static func instantiate(fromStoryboardNamed name: String? = nil) -> Self {
+  static func instantiate(fromStoryboardNamed name: String? = nil) -> Self {
     let sb = name ?? self.storyboardName
     let storyboard = UIStoryboard(name: sb, bundle: nil)
     return self.instantiate(fromStoryboard: storyboard)
   }
 
-  public static func instantiate(fromStoryboard storyboard: UIStoryboard) -> Self {
+  static func instantiate(fromStoryboard storyboard: UIStoryboard) -> Self {
     let identifier = self.storyboardIdentifier
     guard let vc = storyboard.instantiateViewController(withIdentifier: identifier) as? Self else {
       fatalError("Failed to instantiate view controller with identifier=\(identifier) from storyboard \(storyboard)")
@@ -37,13 +37,13 @@ extension StoryboardLoadable where Self: UIViewController {
     return vc
   }
 
-  public static func initial(fromStoryboardNamed name: String? = nil) -> Self {
+  static func initial(fromStoryboardNamed name: String? = nil) -> Self {
     let sb = name ?? self.storyboardName
     let storyboard = UIStoryboard(name: sb, bundle: nil)
     return self.initial(fromStoryboard: storyboard)
   }
 
-  public static func initial(fromStoryboard storyboard: UIStoryboard) -> Self {
+  static func initial(fromStoryboard storyboard: UIStoryboard) -> Self {
     guard let vc = storyboard.instantiateInitialViewController() as? Self else {
       fatalError("Failed to instantiate initial view controller from storyboard named \(storyboard)")
     }

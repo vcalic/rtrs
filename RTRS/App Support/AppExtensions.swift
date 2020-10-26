@@ -8,13 +8,12 @@
 
 import UIKit
 
-
 extension UIStoryboard {
-    static var main: UIStoryboard {
-        return  UIStoryboard(name: "Main", bundle: nil)
-    }
-    static var menu: UIStoryboard {
-        return  UIStoryboard(name: "Menu", bundle: nil)
-    }
-}
+  static var main: UIStoryboard {
+    return UIStoryboard(name: "Main", bundle: nil)
+  }
 
+  static var menu: UIStoryboard {
+    return UIStoryboard(name: "Menu", bundle: nil)
+  }
+}

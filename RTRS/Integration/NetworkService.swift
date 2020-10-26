@@ -56,7 +56,7 @@ private func handle(data: Data?,
   }
 }
 
-struct NetworkService {
+enum NetworkService {
   static func fetchData(url: URL, completion: @escaping (NetworkResult) -> Void) {
     NetworkService.perform(request: URLRequest(url: url), completion: completion)
   }

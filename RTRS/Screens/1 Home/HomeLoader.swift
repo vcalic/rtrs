@@ -8,42 +8,38 @@
 
 import Foundation
 
-
 final class HomeLoader {
-    
-    typealias HomeHandler = (Result<ArticleList, AppError>) -> Void
-    var placeholder = ""
-    /* func loadUser(withID id:Int) -> Future<ArticleList> {
+  typealias HomeHandler = (Result<ArticleList, AppError>) -> Void
+  var placeholder = ""
+  /* func loadUser(withID id:Int) -> Future<ArticleList> {
      
-     } */
+   } */
     
-    func loadUser(withID id: Int, completionHandler: @escaping HomeHandler) {
-        let url = Services.categoryArticles(id: -1, count: 30).value
-        let urlSession = URLSession.shared
+  func loadUser(withID id: Int, completionHandler: @escaping HomeHandler) {
+    let url = Services.categoryArticles(id: -1, count: 30).value
+    let urlSession = URLSession.shared
         
-        let task = urlSession.dataTask(with: url) { [weak self] data, response, error in
-            self?.placeholder = ""
-            if let error = error {
-                let appError = AppError(error: error)
-                completionHandler(.failure(appError))
-            } else {
-                do {
-                    // let user: User = try unbox(data: data ?? Data())
-                    if let data = data {
-                        let list = try ArticleList(with: data)
-                        completionHandler(.success(list))
-                    } else {
-                        completionHandler(.failure(.generalError))
-                    }
+    let task = urlSession.dataTask(with: url) { [weak self] data, _, error in
+      self?.placeholder = ""
+      if let error = error {
+        let appError = AppError(error: error)
+        completionHandler(.failure(appError))
+      } else {
+        do {
+          // let user: User = try unbox(data: data ?? Data())
+          if let data = data {
+            let list = try ArticleList(with: data)
+            completionHandler(.success(list))
+          } else {
+            completionHandler(.failure(.generalError))
+          }
                     
-                } catch {
-                    completionHandler(.failure(AppError(error:error)))
-                }
-            }
+        } catch {
+          completionHandler(.failure(AppError(error: error)))
         }
-        
-        task.resume()
+      }
     }
-    
-
+        
+    task.resume()
+  }
 }

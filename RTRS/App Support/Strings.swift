@@ -49,6 +49,7 @@ private extension Menu {
       return "Kategorije"
     }
   }
+
   var cir: String {
     switch self {
     case .tvUzivo:
@@ -81,6 +82,7 @@ private extension Menu {
       return "Категорије"
     }
   }
+
   var style: MenuStyle {
     switch self {
     case .tvUzivo: return .invert
@@ -88,8 +90,4 @@ private extension Menu {
     default: return .plain
     }
   }
-  
 }
-
-
-

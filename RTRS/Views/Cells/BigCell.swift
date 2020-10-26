@@ -6,34 +6,33 @@
 //  Copyright © 2019 Byrccom. All rights reserved.
 //
 
-import UIKit
 import Kingfisher
+import UIKit
 
 class BigCell: WRCell, WRCellReusable {
+  @IBOutlet var picture: UIImageView!
+  @IBOutlet var title: UILabel!
 
-    @IBOutlet weak var picture: UIImageView!
-    @IBOutlet weak var title: UILabel!
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        picture.kf.cancelDownloadTask()
-        picture.image = nil
-    }
-    
-    func configure(with model: BigCellViewModel) {
-        title.text = model.title
-        picture.setImage(url: model.image)
-    }
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    picture.kf.cancelDownloadTask()
+    picture.image = nil
+  }
+
+  func configure(with model: BigCellViewModel) {
+    title.text = model.title
+    picture.setImage(url: model.image)
+  }
 }
 
 struct BigCellViewModel {
-    var title: String
-    var image: URL?
+  var title: String
+  var image: URL?
 }
 
 extension BigCellViewModel {
-    init(with article: ArticleInfo) {
-        title = article.title.decodeHTMLEntities
-        image = URL(string: article.largeImageUrl)
-    }
+  init(with article: ArticleInfo) {
+    title = article.title.decodeHTMLEntities
+    image = URL(string: article.largeImageUrl)
+  }
 }

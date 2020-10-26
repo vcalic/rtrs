@@ -31,7 +31,7 @@ struct Handlebars {
     }
 
     if let htmlUrl = Bundle.main.url(forResource: "template", withExtension: "html"),
-      let html = try? String(contentsOf: htmlUrl)
+       let html = try? String(contentsOf: htmlUrl)
     {
       htmlTemplate = html
     } else {
@@ -85,7 +85,7 @@ struct Handlebars {
     }
         
     if let jsondata = try? JSONSerialization.data(withJSONObject: tmpTemplates as Any, options: .prettyPrinted),
-      let jsontext = String(data: jsondata, encoding: .utf8)
+       let jsontext = String(data: jsondata, encoding: .utf8)
     {
       return jsontext
     } else {

@@ -9,13 +9,12 @@
 import UIKit
 
 final class ArticleCoordinator: Coordinator {
-    var parent: Coordinator?
-    private let articleService: ArticleService!
-    
-    init(articleService: ArticleService) {
-        self.articleService = articleService
-    }
-    
-    func start(completion: CoordinatorBlock?) {
-    }
+  var parent: Coordinator?
+  private let articleService: ArticleService!
+
+  init(articleService: ArticleService) {
+    self.articleService = articleService
+  }
+
+  func start(completion: CoordinatorBlock?) {}
 }

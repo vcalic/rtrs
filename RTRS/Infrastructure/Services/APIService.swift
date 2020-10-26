@@ -35,7 +35,7 @@ final class APIService {
   }
 
   func homePage(id: Int = -1, count: Int = 30, completion: @escaping (Result<HomePageList, Error>) -> Void) {
-    //let url = Services.categoryArticles(id: id, count: count).value
+    // let url = Services.categoryArticles(id: id, count: count).value
     let url = Services.homePage.value
     debugPrint("URL", url)
     NetworkService.fetchData(url: url) { result in

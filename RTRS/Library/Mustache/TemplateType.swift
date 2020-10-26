@@ -9,20 +9,21 @@
 import Foundation
 
 enum TemplateType: String {
-    case timeSource = "timeSource"
-    case title = "title"
-    case lead = "lead"
-    case video = "video"
-    case body = "body"
-    case article = "article"
-    case layout = "layout"
-    
-    func getContent() throws -> String {
-        if let _url = Bundle.main.url(forResource: self.rawValue, withExtension: "html"),
-            let html = try? String(contentsOf:_url) {
-            return html
-        } else {
-            throw AppError.missingTemplate
-        }
+  case timeSource
+  case title
+  case lead
+  case video
+  case body
+  case article
+  case layout
+
+  func getContent() throws -> String {
+    if let _url = Bundle.main.url(forResource: rawValue, withExtension: "html"),
+       let html = try? String(contentsOf: _url)
+    {
+      return html
+    } else {
+      throw AppError.missingTemplate
     }
+  }
 }

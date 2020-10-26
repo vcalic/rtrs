@@ -9,9 +9,8 @@
 import UIKit
 
 protocol CellConfigurable where Self: UITableViewCell {
-    associatedtype T
-    static var identifier:String {get}
-    static func register(tableView: UITableView)
-    func configure(with object:T)
+  associatedtype T
+  static var identifier: String { get }
+  static func register(tableView: UITableView)
+  func configure(with object: T)
 }
-

@@ -9,12 +9,11 @@
 import Foundation
 
 struct Category: Codable {
-    public var id: Int
-    public var name: String
+  public var id: Int
+  public var name: String
 
-    private enum CodingKeys: String, CodingKey {
-        case id = "CategoryID"
-        case name = "Name"
-    }
-    
+  private enum CodingKeys: String, CodingKey {
+    case id = "CategoryID"
+    case name = "Name"
+  }
 }

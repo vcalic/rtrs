@@ -19,11 +19,8 @@ struct JSON {
   }
 }
 
-struct Async {
-  static func call<T>(input: T, completion: @escaping(T) -> ()) {
+enum Async {
+  static func call<T>(input: T, completion: @escaping (T) -> ()) {
     DispatchQueue.main.async { completion(input) }
   }
 }
-
-
-

@@ -62,7 +62,7 @@ class ArticleSwipeViewController: UIViewController {
     _ = dataSource
     dataSource.goto(page: indexPath.row)
   }
-  
+
   @objc func share(_ sender: Any) {
     let article = dataSource.data[dataSource.index] as! ArticleInfo
     let title = article.title

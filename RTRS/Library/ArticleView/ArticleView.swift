@@ -41,7 +41,7 @@ final class ArticleView: UIView {
   private lazy var webConfig: WKWebViewConfiguration = {
     let retval = WKWebViewConfiguration()
     if let path = Bundle.main.url(forResource: "webkit", withExtension: "js"),
-      let js = try? String(contentsOf: path)
+       let js = try? String(contentsOf: path)
     {
       self.javaScript = js
       let userScript = WKUserScript(source: js, injectionTime: .atDocumentEnd, forMainFrameOnly: false)

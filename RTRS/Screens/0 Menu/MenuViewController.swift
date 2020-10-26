@@ -37,7 +37,7 @@ final class MenuViewController: UITableViewController, StoryboardLoadable {
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let name = dataSource[indexPath.row].name(for: .latin)
-    return MenuCell.dequeue(tableView, at: indexPath).configure(with: name) 
+    return MenuCell.dequeue(tableView, at: indexPath).configure(with: name)
   }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

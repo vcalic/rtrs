@@ -284,7 +284,7 @@ extension String {
     //    decodeNumeric("20ac", 16) --> "€"
     func decodeNumeric(_ string: Substring, base: Int) -> Character? {
       guard let code = UInt32(string, radix: base),
-        let uniScalar = UnicodeScalar(code) else { return nil }
+            let uniScalar = UnicodeScalar(code) else { return nil }
       return Character(uniScalar)
     }
         

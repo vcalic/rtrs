@@ -41,9 +41,8 @@ final class HomeViewController: UIViewController, StoryboardLoadable {
   }
 
   func setup() {
-    navigationController?.navigationBar.backgroundColor = .systemRed
-    navigationController?.navigationBar.barTintColor = .systemRed
-    navigationController?.navigationBar.tintColor = .white
+    Theme.setupNavigation(navigationController, title: "Vijesti")
+    navigationItem.titleView = Theme.rtrsLogo(with: "Vijesti")
     BigCell.register(in: tableView)
     StoryCell.register(in: tableView)
     tableView.rowHeight = UITableView.automaticDimension
@@ -78,8 +77,7 @@ extension HomeViewController: UITableViewDataSource {
       let model = BigCellViewModel(with: dataSource[indexPath.row])
       cell.configure(with: model)
       return cell
-    }
-    else {
+    } else {
       let cell: StoryCell = tableView.dequeue(for: indexPath)
       let model = StoryCellViewModel(with: dataSource[indexPath.row])
       cell.configure(with: model)

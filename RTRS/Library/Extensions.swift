@@ -110,16 +110,16 @@ extension UIView {
   }
 }
 
-extension UIViewController {
-  public typealias LayoutBlock = (UIView, UIView) -> Void
+public extension UIViewController {
+  typealias LayoutBlock = (UIView, UIView) -> Void
     
-  func embed<T>(viewController vc: T) where T: UIViewController {
+  internal func embed<T>(viewController vc: T) where T: UIViewController {
     addChild(vc)
     view.embed(view: vc.view)
     vc.didMove(toParent: self)
   }
     
-  public func embed<T>(controller vc: T, into parentView: UIView?, layout: LayoutBlock = {
+  func embed<T>(controller vc: T, into parentView: UIView?, layout: LayoutBlock = {
     v, pv in
         
     let constraints: [NSLayoutConstraint] = [
@@ -152,7 +152,7 @@ extension UIViewController {
     //    somewhere in calling scope
   }
     
-  public func unembed(controller: UIViewController?) {
+  func unembed(controller: UIViewController?) {
     guard let controller = controller else { return }
         
     controller.willMove(toParent: nil)
@@ -194,7 +194,7 @@ extension String {
       return url
     }
     if let helper = urlEscape(),
-      let url = URL(string: helper)
+       let url = URL(string: helper)
     {
       return url
     }
@@ -233,38 +233,38 @@ extension Data {
   }
 }
 
-extension Bundle {
-  public static var appName: String {
+public extension Bundle {
+  static var appName: String {
     guard let str = main.object(forInfoDictionaryKey: "CFBundleName") as? String else { return "" }
     return str
   }
     
-  public static var appVersion: String {
+  static var appVersion: String {
     guard let str = main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String else { return "" }
     return str
   }
     
-  public static var appBuild: String {
+  static var appBuild: String {
     guard let str = main.object(forInfoDictionaryKey: "CFBundleVersion") as? String else { return "" }
     return str
   }
     
-  public static var identifier: String {
+  static var identifier: String {
     guard let str = main.object(forInfoDictionaryKey: "CFBundleIdentifier") as? String else { return "" }
     return str
   }
 }
 
-extension UIFont {
-  public func withSize(_ fontSize: CGFloat) -> UIFont {
+public extension UIFont {
+  func withSize(_ fontSize: CGFloat) -> UIFont {
     return UIFont(name: self.fontName, size: fontSize)!
   }
     
-  public func withSizeScaled(_ scale: CGFloat) -> UIFont {
+  func withSizeScaled(_ scale: CGFloat) -> UIFont {
     return UIFont(name: self.fontName, size: floor(self.pointSize * scale))!
   }
     
-  public static func listAvailableFonts() {
+  static func listAvailableFonts() {
     for family in UIFont.familyNames {
       print("\(family)")
             
@@ -510,30 +510,30 @@ protocol ClassNameProtocol {
   var className: String { get }
 }
 
-extension ClassNameProtocol {
-  public static var className: String {
+public extension ClassNameProtocol {
+  static var className: String {
     return String(describing: self)
   }
     
-  public var className: String {
+  var className: String {
     return type(of: self).className
   }
 }
 
 extension NSObject: ClassNameProtocol {}
 
-extension UITableView {
-  public func register<T: UITableViewCell>(cellType: T.Type, bundle: Bundle? = nil) {
+public extension UITableView {
+  func register<T: UITableViewCell>(cellType: T.Type, bundle: Bundle? = nil) {
     let className = cellType.className
     let nib = UINib(nibName: className, bundle: bundle)
     register(nib, forCellReuseIdentifier: className)
   }
     
-  public func register<T: UITableViewCell>(cellTypes: [T.Type], bundle: Bundle? = nil) {
+  func register<T: UITableViewCell>(cellTypes: [T.Type], bundle: Bundle? = nil) {
     cellTypes.forEach { register(cellType: $0, bundle: bundle) }
   }
     
-  public func dequeueReusableCell<T: UITableViewCell>(with type: T.Type, for indexPath: IndexPath) -> T {
+  func dequeueReusableCell<T: UITableViewCell>(with type: T.Type, for indexPath: IndexPath) -> T {
     return self.dequeueReusableCell(withIdentifier: type.className, for: indexPath) as! T
   }
 }
